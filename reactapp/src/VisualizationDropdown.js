@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Select from "react-select";
 
 function VisualizationDropdown({ handleChange }) {
-  const [visType, visChange] = useState();
+  const [visType, visChange] = useState("oscillogram");
   const options = [
     { label: "Oscillogram", value: "oscillogram" },
     { label: "Fourier Transform", value: "fourier-transform" },

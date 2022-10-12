@@ -1,10 +1,9 @@
-from django.shortcuts import render
-from django.http import JsonResponse
-
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from .serializers import BirdSerializer
+from .serializers import BirdInfoSerializer
+from .serializers import BirdAudioSerializer
+
 from .models import Bird
 
 import soundfile as sf
@@ -29,32 +28,39 @@ def api_overview(request):
 
 @api_view(['GET'])
 def bird_list(request):
-    birds = Bird.objects.all()
-    serializer = BirdSerializer(birds, many=True)
-    return Response(serializer.data)
+    birds = Bird.objects.all().filter(call_number=0)
+    bird_names = []
+    for i in range(len(birds)):
+        bird_names.append(birds[i].common_name)
+    return Response(bird_names)
 
 
 @api_view(['GET'])
 def bird_details(request, name):
     birds = Bird.objects.filter(common_name=name).order_by("pk")[0]
-    serializer = BirdSerializer(birds, many=False)
+    serializer = BirdInfoSerializer(birds, many=False)
     return Response(serializer.data)
 
 
 @api_view(['GET'])
-def bird_audio_details(request, name):
-    bird = Bird.objects.get(common_name=name)
-    url = bird.call
-    data, sample_rate = sf.read(io.BytesIO(urlopen(url).read()))
-    return Response({
-        "data": data.tolist(),
-        "samplerate": sample_rate
-    })
+def bird_audio_files(request, name):
+    birds = Bird.objects.all().filter(common_name=name)
+    audio_files = []
+    for i in range(len(birds)):
+        audio_files.append(birds[i].call_number)
+    return Response(audio_files)
 
 
 @api_view(['GET'])
-def bird_oscillogram(request, name):
-    bird = Bird.objects.get(common_name=name)
+def bird_audio_details(request, name, number):
+    bird = Bird.objects.get(common_name=name, call_number=number)
+    serializer = BirdAudioSerializer(bird, many=False)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def bird_oscillogram(request, name, number):
+    bird = Bird.objects.get(common_name=name, call_number=number)
     url = bird.call
     data, sample_rate = sf.read(io.BytesIO(urlopen(url).read()))
 
@@ -68,11 +74,6 @@ def bird_oscillogram(request, name):
         title='Oscillogram',
         xaxis_title="Time(s.)",
         yaxis_title="Amplitude",
-        width=600,
-        paper_bgcolor="#000",
-        font_color="#fff",
-        font_size=14,
-        title_x=0.5
     )
     fig.update_traces(line_color='#1c6bb0')
     fig_json = fig.to_json()
@@ -80,15 +81,14 @@ def bird_oscillogram(request, name):
 
 
 @api_view(['GET'])
-def bird_fourier_transform(request, name):
-    bird = Bird.objects.get(common_name=name)
+def bird_fourier_transform(request, name, number):
+    bird = Bird.objects.get(common_name=name, call_number=number)
     url = bird.call
     data, sample_rate = sf.read(io.BytesIO(urlopen(url).read()))
 
     duration = len(data) / float(sample_rate)
 
     N = int(np.ceil(sample_rate * duration))
-    time = np.linspace(0, duration, N, endpoint=False)
 
     yf = rfft(data)
     xf = rfftfreq(int(N), 1 / sample_rate)
@@ -98,11 +98,7 @@ def bird_fourier_transform(request, name):
         title='Fourier Transform',
         xaxis_title="Frequency(Hz.)",
         yaxis_title="Magnitude",
-        width=600,
-        paper_bgcolor="#000",
-        font_color="#fff",
-        font_size=14,
-        title_x=0.5)
+       )
 
     fig.update_traces(line_color='#1c6bb0')
     fig_json = fig.to_json()
@@ -110,9 +106,9 @@ def bird_fourier_transform(request, name):
 
 
 @api_view(['GET'])
-def bird_spectrogram(request, name):
+def bird_spectrogram(request, name, number):
     matplotlib.use("agg")
-    bird = Bird.objects.get(common_name=name)
+    bird = Bird.objects.get(common_name=name, call_number=number)
     url = bird.call
     data, sample_rate = sf.read(io.BytesIO(urlopen(url).read()))
 
@@ -129,11 +125,7 @@ def bird_spectrogram(request, name):
         title='Spectrogram',
         xaxis_title="Time(s.)",
         yaxis_title="Frequency(Hz.)",
-        width=600,
-        paper_bgcolor="#000",
-        font_color="#fff",
-        font_size=14,
-        title_x=0.5)
+        )
 
     fig_json = fig.to_json()
     return Response(fig_json)

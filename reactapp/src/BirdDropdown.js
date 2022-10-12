@@ -3,12 +3,22 @@ import Select from "react-select";
 
 function BirdDropdown({ handleChange }) {
   const [bird, birdChange] = useState();
-  const options = [
-    { label: "Acadian Flycatcher", value: "Acadian Flycatcher" },
-    { label: "Acorn Woodpecker", value: "Acorn Woodpecker" },
-  ];
+  const [options, setOptions] = useState([]);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    fetch("/api/bird-list/")
+      .then((response) => response.json())
+      .then((data) => {
+        setOptions(
+          data.map((entry) => {
+            var singleObj = {};
+            singleObj["label"] = entry;
+            singleObj["value"] = entry;
+            return singleObj;
+          })
+        );
+      });
+  }, []);
 
   return (
     <div>
@@ -20,6 +30,7 @@ function BirdDropdown({ handleChange }) {
         className="select"
         color="#5c5cff"
         onChange={handleChange}
+        isSearchable
       />
     </div>
   );

@@ -13,12 +13,16 @@ function Graph(props) {
 
   return (
     <div>
-      <Plot
-        data={data}
-        layout={layout}
-        onInitialized={(figure) => setFigure(figure)}
-        onUpdate={(figure) => setFigure(figure)}
-      ></Plot>
+      {props.data === "" ? (
+        <div />
+      ) : (
+        <Plot
+          data={data}
+          layout={layout}
+          onInitialized={(figure) => setFigure(figure)}
+          onUpdate={(figure) => setFigure(figure)}
+        ></Plot>
+      )}
     </div>
   );
 }

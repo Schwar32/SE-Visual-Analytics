@@ -2,7 +2,13 @@ from rest_framework import serializers
 from .models import Bird
 
 
-class BirdSerializer(serializers.ModelSerializer):
+class BirdInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bird
-        fields = '__all__'
+        fields = ['common_name', 'scientific_name']
+
+
+class BirdAudioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Bird
+        fields = ['location', 'call', 'call_number', 'call_types']

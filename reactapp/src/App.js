@@ -5,6 +5,7 @@ import "react-h5-audio-player/lib/styles.css";
 import Graph from "./Graph";
 import VisualizationDropdown from "./VisualizationDropdown";
 import BirdDropdown from "./BirdDropdown";
+import AudioFileDropdown from "./AudioFileDropdown";
 
 function App() {
   const [bird, setBird] = useState("");
@@ -12,8 +13,9 @@ function App() {
   const [scientificName, setScientificName] = useState("");
   const [location, setLocation] = useState("");
   const [file, setFile] = useState("");
+  const [fileNumber, setFileNumber] = useState("");
   const [graph, setGraph] = useState("");
-  const [visType, setVisType] = useState("");
+  const [visType, setVisType] = useState("oscillogram");
 
   useEffect(() => {
     if (bird !== "") {
@@ -22,22 +24,36 @@ function App() {
         .then((data) => {
           setCommonName(data.common_name);
           setScientificName(data.scientific_name);
-          setLocation(data.location);
-          setFile(data.call);
         });
     }
-  }, [bird, commonName, scientificName, location, file]);
+  }, [bird]);
 
   useEffect(() => {
-    if (visType !== "") {
-      fetch("/api/bird-" + visType + "/" + bird)
+    if (bird !== "" && fileNumber !== "") {
+      fetch("/api/bird-audio-details/" + bird + "/" + fileNumber)
+        .then((response) => response.json())
+        .then((data) => {
+          setLocation(data.location);
+          setFile(data.call);
+          setVisType("oscillogram");
+        });
+    }
+  }, [bird, fileNumber]);
+
+  useEffect(() => {
+    if (bird !== "") {
+      fetch("/api/bird-" + visType + "/" + bird + "/" + fileNumber)
         .then((response) => response.json())
         .then((data) => setGraph(data));
     }
-  }, [visType]);
+  }, [fileNumber, visType]);
 
   const handleBirdChange = (selection) => {
     setBird(selection.value);
+  };
+
+  const handleFileChange = (selection) => {
+    setFileNumber(selection.value);
   };
 
   const handleVisChange = (selection) => {
@@ -45,20 +61,35 @@ function App() {
   };
 
   return (
-    <div className="container">
+    <div>
       <BirdDropdown handleChange={handleBirdChange}></BirdDropdown>
-      <h2>Common Name</h2>
-      {commonName === "" ? <p>Loading...</p> : <p>{commonName}</p>}
-      <h2>Scientific Name</h2>
-      {scientificName === "" ? <p>Loading...</p> : <p>{scientificName}</p>}
-      <h2>Location</h2>
-      {location === "" ? <p>Loading...</p> : <p>{location}</p>}
+      <AudioFileDropdown
+        bird={bird}
+        handleChange={handleFileChange}
+      ></AudioFileDropdown>
+      {commonName === "" || scientificName === "" ? (
+        <div />
+      ) : (
+        <div>
+          <h2 className="text-center">Common Name</h2>
+          <p className="text-center">{commonName}</p>
+          <h2 className="text-center">Scientific Name</h2>
+          <p className="text-center">{scientificName}</p>
+        </div>
+      )}
+
       {file === "" ? (
         <div />
       ) : (
         <div>
+          <h2 className="text-center">Location</h2>
+          {location === "" ? (
+            <div />
+          ) : (
+            <p className="text-center">{location}</p>
+          )}
           <AudioPlayer
-            style={{ borderRadius: "1rem", margin: "2em" }}
+            style={{ borderRadius: "1rem", width: "auto", margin: "1em auto" }}
             showSkipControls={false}
             showJumpControls={true}
             src={file}
@@ -70,12 +101,25 @@ function App() {
       )}
 
       {graph === "" ? (
-        <p>Loading...</p>
+        <div />
       ) : (
-        <Graph
-          data={JSON.parse(graph).data}
-          layout={JSON.parse(graph).layout}
-        />
+        <div>
+          <Graph
+            className="m-5"
+            data={JSON.parse(graph).data}
+            layout={{
+              width: 600,
+              height: 450,
+              title: JSON.parse(graph).layout.title,
+              xaxis: {
+                title: JSON.parse(graph).layout.xaxis.title,
+              },
+              yaxis: {
+                title: JSON.parse(graph).layout.yaxis.title,
+              },
+            }}
+          />
+        </div>
       )}
     </div>
   );

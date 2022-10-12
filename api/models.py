@@ -7,7 +7,8 @@ class Bird(models.Model):
     scientific_name = models.CharField(default="", max_length=200)
     location = models.CharField(default="", max_length=200)
     call = models.CharField(default="", max_length=500)
+    call_number = models.IntegerField(default=-1)
     call_types = models.CharField(default="", max_length=200)
 
     def __str__(self):
-        return self.common_name
+        return self.short_name + "-" + str(self.call_number)
