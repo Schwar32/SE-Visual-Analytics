@@ -105,7 +105,6 @@ function App() {
       ) : (
         <div>
           <Graph
-            className="m-5"
             data={JSON.parse(graph).data}
             layout={{
               width: 600,
