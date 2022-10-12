@@ -18,15 +18,6 @@ import io
 
 
 @api_view(['GET'])
-def api_overview(request):
-    api_urls = {
-        'List': '/bird-list/',
-        'Bird Details': '/bird-details/<str:name>'
-    }
-    return Response(api_urls)
-
-
-@api_view(['GET'])
 def bird_list(request):
     birds = Bird.objects.all().filter(call_number=0)
     bird_names = []

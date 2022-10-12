@@ -2,7 +2,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.api_overview, name="api-overview"),
     path('bird-list/', views.bird_list, name="bird-list"),
     path('bird-details/<str:name>', views.bird_details, name="bird-details"),
     path('bird-audio-files/<str:name>', views.bird_audio_files, name="bird-audio-files"),
