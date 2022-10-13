@@ -43,10 +43,18 @@ def db_setup():
 
 def file_cleanup():
     df = pd.read_csv('./api/train_metadata.csv')
+    filtered_df = df.loc[(df["secondary_labels"] != "[]") | (df["rating"] < 5)]
+    length = len(filtered_df)
+
+    for i in range(length):
+        bird_data = filtered_df.iloc[i]
+        os.remove(os.getcwd() + "/Bird_Calls/" + bird_data.primary_label + "/" + bird_data.filename)
+
     filtered_df = df.loc[(df["secondary_labels"] == "[]") & (df["rating"] >= 5)]
     length = len(filtered_df)
     index = 0
     active_bird = ""
+
     for i in range(length):
         bird_data = filtered_df.iloc[i]
         if active_bird != bird_data.primary_label:

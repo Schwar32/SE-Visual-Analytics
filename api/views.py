@@ -16,6 +16,9 @@ import matplotlib
 from urllib.request import urlopen
 import io
 
+import ssl
+
+ssl._create_default_https_context = ssl._create_unverified_context
 
 @api_view(['GET'])
 def bird_list(request):
