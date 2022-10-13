@@ -1,7 +1,0 @@
-{
-  "short_name": "VisAnalytics",
-  "name": "Visual Analytics of Bird Calls",
-  "icons": [],
-  "start_url": ".",
-  "display": "standalone"
-}
