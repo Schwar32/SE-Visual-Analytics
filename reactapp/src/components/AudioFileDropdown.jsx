@@ -27,7 +27,7 @@ function BirdDropdown({ bird, handleChange }) {
       <Select
         value={file}
         options={options}
-        placeholder="Select Bird"
+        placeholder="Select Audio File"
         dropdownPosition="top"
         className="select"
         color="#5c5cff"

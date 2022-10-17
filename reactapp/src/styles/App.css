@@ -1,0 +1,11 @@
+.navbar {
+  background: rgb(35, 35, 35);
+}
+
+.navbar-nav > li {
+  margin-right: 1em;
+}
+
+.row {
+  gap: 2.5em;
+}

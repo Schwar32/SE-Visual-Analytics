@@ -15,10 +15,13 @@ import plotly.graph_objects as go
 import matplotlib
 from urllib.request import urlopen
 import io
-
+from scipy import signal
 import ssl
-
+import pandas as pd
+import os
+from geopy.geocoders import Nominatim
 ssl._create_default_https_context = ssl._create_unverified_context
+
 
 @api_view(['GET'])
 def bird_list(request):
@@ -108,13 +111,21 @@ def bird_spectrogram(request, name, number):
 
     d, frequency, time, image = plt.specgram(data, Fs=sample_rate)
 
-    d = np.log10(d) #Have to take log10 i dont really know why
+    with np.errstate(divide='ignore', invalid='ignore'):
+        d = np.log10(d)     # Have to take log10 i don't really know why
 
     fig = go.Figure(data=go.Heatmap(
         z=d,
         x=time,
         y=frequency,
-        colorscale='blues'))
+        colorscale=[
+            [0, 'rgb(0, 0, 0)'],
+            [0.5, 'rgb(0, 0, 0)'],
+            [0.8, 'rgb(60, 100, 235)'],
+            [.9, 'rgb(100, 150, 255)'],
+            [1, 'rgb(100, 150, 255)'],
+        ]))
+
     fig.update_layout(
         title='Spectrogram',
         xaxis_title="Time(s.)",

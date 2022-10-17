@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import Select from "react-select";
 
-function VisualizationDropdown({ handleChange }) {
-  const [visType, visChange] = useState("oscillogram");
+function VisualizationDropdown({ visType, handleChange }) {
   const options = [
     { label: "Oscillogram", value: "oscillogram" },
     { label: "Fourier Transform", value: "fourier-transform" },
@@ -19,6 +18,7 @@ function VisualizationDropdown({ handleChange }) {
         className="select"
         color="#5c5cff"
         onChange={handleChange}
+        isSearchable={false}
       />
     </div>
   );
