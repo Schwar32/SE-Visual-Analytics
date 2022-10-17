@@ -3,18 +3,19 @@
 }
 
 .navbar-brand {
-  margin-left: 2%;
 }
 
 .navbar-nav {
   margin-left: auto;
+  margin-right: 1em;
 }
 
 .navbar-nav > li {
   margin-right: 2em;
+  margin-left: auto;
 }
 
 .plotly-chart {
-  aspect-ratio: 4/3;
+  aspect-ratio: 5/3.5;
   width: 100%;
 }

@@ -79,7 +79,7 @@ function BirdContainer() {
   };
 
   return (
-    <div className="col-lg-6">
+    <div className="col-lg-6 py-5">
       <BirdDropdown handleChange={handleBirdChange}></BirdDropdown>
       {bird === "" ? (
         <div />

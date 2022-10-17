@@ -6,7 +6,7 @@ function App() {
   return (
     <div>
       <Navbar />
-      <div className="container-fluid p-5">
+      <div className="container-fluid ">
         <div className="row justify-content-center">
           <BirdContainer />
           <BirdContainer />

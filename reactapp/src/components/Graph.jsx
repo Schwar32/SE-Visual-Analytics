@@ -27,6 +27,7 @@ function Graph({ data, layout }) {
             plot_bgcolor: "white",
             hovermode: false,
           }}
+          config={{ responsive: true }}
           useResizeHandler
           className="plotly-chart"
         ></Plot>

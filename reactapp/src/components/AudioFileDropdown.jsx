@@ -32,7 +32,7 @@ function BirdDropdown({ bird, handleChange }) {
         className="select"
         color="#5c5cff"
         onChange={handleChange}
-        isSearchable
+        isSearchable={false}
       />
     </div>
   );
