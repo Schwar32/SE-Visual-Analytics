@@ -17,38 +17,54 @@ function BirdContainer() {
   const [file, setFile] = useState("");
   const [fileNumber, setFileNumber] = useState("");
   const [graph, setGraph] = useState("");
-  const [visType, setVisType] = useState("oscillogram");
+  const [visType, setVisType] = useState("");
 
+  function fetchBirdDetails() {
+    fetch("/api/bird-details/" + bird)
+      .then((response) => response.json())
+      .then((data) => {
+        setCommonName(data.common_name);
+        setScientificName(data.scientific_name);
+      });
+  }
+
+  function fetchAudioDeatils() {
+    fetch("/api/bird-audio-details/" + bird + "/" + fileNumber)
+      .then((response) => response.json())
+      .then((data) => {
+        setLocation(data.location);
+        setFile(data.call);
+      });
+  }
+
+  function fetchGraphData() {
+    fetch("/api/bird-" + visType + "/" + bird + "/" + fileNumber)
+      .then((response) => response.json())
+      .then((data) => {
+        setGraph(data);
+      });
+  }
+
+  //Information updated when bird is changed
   useEffect(() => {
     if (bird !== "") {
-      fetch("/api/bird-details/" + bird)
-        .then((response) => response.json())
-        .then((data) => {
-          setCommonName(data.common_name);
-          setScientificName(data.scientific_name);
-        });
+      fetchBirdDetails();
     }
   }, [bird]);
 
+  //Information updated when bird or audio file is changed
   useEffect(() => {
     if (bird !== "" && fileNumber !== "") {
-      fetch("/api/bird-audio-details/" + bird + "/" + fileNumber)
-        .then((response) => response.json())
-        .then((data) => {
-          setLocation(data.location);
-          setFile(data.call);
-          setVisType("oscillogram");
-        });
+      fetchAudioDeatils();
     }
   }, [bird, fileNumber]);
 
+  //Information updated when bird, audio file, or visualization type is changed
   useEffect(() => {
-    if (bird !== "") {
-      fetch("/api/bird-" + visType + "/" + bird + "/" + fileNumber)
-        .then((response) => response.json())
-        .then((data) => setGraph(data));
+    if (bird !== "" && visType !== "") {
+      fetchGraphData();
     }
-  }, [fileNumber, visType]);
+  }, [bird, fileNumber, visType]);
 
   const handleBirdChange = (selection) => {
     setBird(selection.value);
@@ -63,7 +79,7 @@ function BirdContainer() {
   };
 
   return (
-    <div>
+    <div className="col-lg-6">
       <BirdDropdown handleChange={handleBirdChange}></BirdDropdown>
       {bird === "" ? (
         <div />

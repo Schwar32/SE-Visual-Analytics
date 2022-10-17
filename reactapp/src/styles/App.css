@@ -2,10 +2,19 @@
   background: rgb(35, 35, 35);
 }
 
-.navbar-nav > li {
-  margin-right: 1em;
+.navbar-brand {
+  margin-left: 2%;
 }
 
-.row {
-  gap: 2.5em;
+.navbar-nav {
+  margin-left: auto;
+}
+
+.navbar-nav > li {
+  margin-right: 2em;
+}
+
+.plotly-chart {
+  aspect-ratio: 4/3;
+  width: 100%;
 }
