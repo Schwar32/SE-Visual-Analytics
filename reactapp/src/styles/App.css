@@ -1,5 +1,5 @@
 .navbar {
-  background: rgb(35, 35, 35);
+  background: rgba(95, 119, 199, 0.87);
 }
 
 .navbar-brand {
@@ -18,4 +18,8 @@
 .plotly-chart {
   aspect-ratio: 5/3.5;
   width: 100%;
+}
+
+.body {
+  background-color:rgb(74, 64, 212)
 }
