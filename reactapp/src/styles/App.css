@@ -1,5 +1,5 @@
 .navbar {
-  background: rgba(95, 119, 199, 0.87);
+  background: #503d5c;
 }
 
 .navbar-brand {
@@ -20,6 +20,10 @@
   width: 100%;
 }
 
-.body {
-  background-color:rgb(74, 64, 212)
+.select {
+  background-color: #edaafa;
+}
+
+body {
+  background-color: #f6e2fa;
 }

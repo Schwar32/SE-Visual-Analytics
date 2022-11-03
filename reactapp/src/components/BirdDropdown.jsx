@@ -29,6 +29,7 @@ function BirdDropdown({ handleChange }) {
         dropdownPosition="top"
         className="select"
         color="#5c5cff"
+        background-color="#f6e2fa"
         onChange={handleChange}
         isSearchable
       />
