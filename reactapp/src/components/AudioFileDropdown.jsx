@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
 
-function BirdDropdown({ bird, handleChange }) {
-  const [file, fileChange] = useState();
+function BirdDropdown({ bird, file, handleChange }) {
   const [options, setOptions] = useState([]);
 
   useEffect(() => {
@@ -25,9 +24,8 @@ function BirdDropdown({ bird, handleChange }) {
   return (
     <div>
       <Select
-        value={file}
+        value={{ label: "Audio File " + file }}
         options={options}
-        placeholder="Select Audio File"
         dropdownPosition="top"
         className="select"
         color="#5c5cff"

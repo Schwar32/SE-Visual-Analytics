@@ -4,7 +4,7 @@ import AudioPlayer from "react-h5-audio-player";
 
 import Graph from "./Graph";
 import VisualizationDropdown from "./VisualizationDropdown";
-import BirdDropdown from ".//BirdDropdown";
+import BirdDropdown from "./BirdDropdown";
 import AudioFileDropdown from "./AudioFileDropdown";
 
 import "react-h5-audio-player/lib/styles.css";
@@ -56,6 +56,11 @@ function BirdContainer() {
   useEffect(() => {
     if (bird !== "" && fileNumber !== "") {
       fetchAudioDeatils();
+      //fetch("/api/bird-oscillogram/" + bird + "/" + fileNumber);
+
+      //fetch("/api/bird-fourier-transform/" + bird + "/" + fileNumber);
+
+      //fetch("/api/bird-spectrogram/" + bird + "/" + fileNumber);
     }
   }, [bird, fileNumber]);
 
@@ -68,6 +73,7 @@ function BirdContainer() {
 
   const handleBirdChange = (selection) => {
     setBird(selection.value);
+    setFileNumber(0);
   };
 
   const handleFileChange = (selection) => {
@@ -86,6 +92,7 @@ function BirdContainer() {
       ) : (
         <AudioFileDropdown
           bird={bird}
+          file={fileNumber}
           handleChange={handleFileChange}
         ></AudioFileDropdown>
       )}
