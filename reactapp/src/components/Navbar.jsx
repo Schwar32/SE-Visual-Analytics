@@ -1,12 +1,12 @@
-import { Outlet, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Navbar() {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark">
-        <Link to="/" className="navbar-brand">
+        <NavLink to="/" className="navbar-brand">
           Visual Analytics <span className="sr-only">(current)</span>
-        </Link>
+        </NavLink>
         <button
           className="navbar-toggler"
           type="button"
@@ -21,25 +21,24 @@ function Navbar() {
 
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
-            <li className="nav-item active">
-              <Link to="/" className="nav-link">
+            <li className="nav-item">
+              <NavLink to="/" className="nav-link">
                 Explore
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link to="/BirdIndetifyer" className="nav-link">
+              <NavLink to="/BirdIdentifyer" className="nav-link">
                 Bird Indetifyer
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link to="/About" className="nav-link">
+              <NavLink to="/About" className="nav-link">
                 About
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </div>
       </nav>
-      <Outlet />
     </div>
   );
 }
