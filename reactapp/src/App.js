@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Explore from "./pages/Explore";
 import BirdIdentifyer from "./pages/BirdIdentifyer";
 import About from "./pages/About";
+import NotFound from "./pages/NotFound";
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
           <Route path="/" element={<Explore />} />
           <Route path="/BirdIdentifyer" element={<BirdIdentifyer />} />
           <Route path="/About" element={<About />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </div>
