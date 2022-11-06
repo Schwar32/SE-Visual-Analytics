@@ -5,7 +5,7 @@ function NotFound() {
     <div>
       <div className="container-fluid ">
         <div className="row justify-content-center">
-          <p>Page Not Found</p>
+          <p className="py-5">Page Not Found</p>
         </div>
       </div>
     </div>

@@ -21,3 +21,5 @@
 /reactappnpm-debug.log*
 /reactappyarn-debug.log*
 /reactappyarn-error.log*
+
+.idea

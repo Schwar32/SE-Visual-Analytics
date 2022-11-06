@@ -5,7 +5,7 @@ function BirdIdentifyer() {
     <div>
       <div className="container-fluid ">
         <div className="row justify-content-center">
-          <p>The machine learning side</p>
+          <p className="py-5">The machine learning side</p>
         </div>
       </div>
     </div>
