@@ -28,7 +28,7 @@ function Navbar() {
             </li>
             <li className="nav-item">
               <NavLink to="/BirdIdentifyer" className="nav-link">
-                Bird Indetifyer
+                Bird Identifyer
               </NavLink>
             </li>
             <li className="nav-item">
