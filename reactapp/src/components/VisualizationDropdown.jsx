@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Select from "react-select";
+import CustomSelect from "./CustomSelect";
 
 function VisualizationDropdown({ visType, handleChange }) {
   const options = [
@@ -10,13 +10,11 @@ function VisualizationDropdown({ visType, handleChange }) {
 
   return (
     <div>
-      <Select
+      <CustomSelect
         value={visType}
         options={options}
         placeholder="Select Visualization Type"
         dropdownPosition="top"
-        className="select"
-        color="#5c5cff"
         onChange={handleChange}
         isSearchable={false}
       />

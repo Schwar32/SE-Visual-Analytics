@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Select from "react-select";
+import CustomSelect from "./CustomSelect";
 
 function BirdDropdown({ handleChange }) {
   const [bird, birdChange] = useState();
@@ -22,14 +22,11 @@ function BirdDropdown({ handleChange }) {
 
   return (
     <div>
-      <Select
+      <CustomSelect
         value={bird}
         options={options}
         placeholder="Select Bird"
         dropdownPosition="top"
-        className="select"
-        color="#5c5cff"
-        background-color="#f6e2fa"
         onChange={handleChange}
         isSearchable
       />

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Select from "react-select";
+import CustomSelect from "./CustomSelect";
 
 function BirdDropdown({ bird, file, handleChange }) {
   const [options, setOptions] = useState([]);
@@ -23,12 +23,10 @@ function BirdDropdown({ bird, file, handleChange }) {
 
   return (
     <div>
-      <Select
+      <CustomSelect
         value={{ label: "Audio File " + file }}
         options={options}
         dropdownPosition="top"
-        className="select"
-        color="#5c5cff"
         onChange={handleChange}
         isSearchable={false}
       />
