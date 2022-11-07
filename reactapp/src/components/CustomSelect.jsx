@@ -5,26 +5,42 @@ function CustomSelect(props) {
   const COLOR = "white";
 
   const customStyles = {
-    menu: (provided) => ({
-      ...provided,
-      backgroundColor: BACKGROUND_COLOR,
-      color: COLOR,
-    }),
-    control: (provided) => ({
-      ...provided,
+    control: (defaultStyles) => ({
+      ...defaultStyles,
       color: COLOR,
       backgroundColor: BACKGROUND_COLOR,
-      margin: "1em",
+      marginBottom: "2em",
+      borderRadius: ".25em",
     }),
-    option: (provided) => ({
-      ...provided,
+    menu: (defaultStyles) => ({
+      ...defaultStyles,
+      backgroundColor: BACKGROUND_COLOR,
+      color: COLOR,
+      marginTop: "0",
+    }),
+    option: (defaultStyles) => ({
+      ...defaultStyles,
       color: COLOR,
       backgroundColor: BACKGROUND_COLOR,
     }),
-    singleValue: (provided) => ({
-      ...provided,
+    singleValue: (defaultStyles) => ({
+      ...defaultStyles,
       color: COLOR,
     }),
+    placeholder: (defaultStyles) => {
+      return {
+        ...defaultStyles,
+        color: COLOR,
+        opacity: 0.75,
+      };
+    },
+    input: (defaultStyles) => {
+      return {
+        ...defaultStyles,
+        color: COLOR,
+        opacity: 0.75,
+      };
+    },
   };
 
   return (
