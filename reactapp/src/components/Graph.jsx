@@ -12,19 +12,19 @@ function Graph({ data, layout }) {
             title: {
               text: layout.title.text,
               font: {
-                color: "black",
+                color: "white",
               },
             },
             xaxis: {
               title: layout.xaxis.title,
-              color: "black",
+              color: "white",
             },
             yaxis: {
               title: layout.yaxis.title,
-              color: "black",
+              color: "white",
             },
-            paper_bgcolor: "#f6e2fa",
-            plot_bgcolor: "#f6e2fa",
+            paper_bgcolor: "#0c082a",
+            plot_bgcolor: "#0c082a",
             hovermode: false,
           }}
           config={{ responsive: true }}

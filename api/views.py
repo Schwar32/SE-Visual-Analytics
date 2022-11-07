@@ -70,7 +70,7 @@ def bird_oscillogram(request, name, number):
         xaxis_title="Time(s.)",
         yaxis_title="Amplitude",
     )
-    fig.update_traces(line_color='#503d5c')
+    fig.update_traces(line_color='#5ABAFF')
     fig_json = fig.to_json()
     return Response(fig_json)
 
@@ -95,7 +95,7 @@ def bird_fourier_transform(request, name, number):
         yaxis_title="Magnitude",
        )
 
-    fig.update_traces(line_color='#503d5c')
+    fig.update_traces(line_color='#5ABAFF')
     fig_json = fig.to_json()
     return Response(fig_json)
 
@@ -118,11 +118,11 @@ def bird_spectrogram(request, name, number):
         x=time,
         y=frequency,
         colorscale=[
-            [0, 'rgb(0, 0, 0)'],
-            [0.5, 'rgb(0, 0, 0)'],
-            [0.8, '#b1aab3'],
-            [.9, '#8b7991'],
-            [1, '#503d5c'],
+            [0, '#0c082a'],
+            [0.5, '#0c082a'],
+            [0.8, '#4691C7'],
+            [.9, '#4EA2DE'],
+            [1, '#5ABAFF'],
         ]))
 
     fig.update_layout(

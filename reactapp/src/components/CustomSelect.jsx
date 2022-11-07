@@ -1,7 +1,7 @@
 import Select from "react-select";
 
 function CustomSelect(props) {
-  const BACKGROUND_COLOR = "#503d5c";
+  const BACKGROUND_COLOR = "#3b365a";
   const COLOR = "white";
 
   const customStyles = {

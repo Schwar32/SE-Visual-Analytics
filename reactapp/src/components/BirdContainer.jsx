@@ -101,10 +101,8 @@ function BirdContainer() {
         <div />
       ) : (
         <div>
-          <h2 className="text-center">Common Name</h2>
-          <p className="text-center">{commonName}</p>
-          <h2 className="text-center">Scientific Name</h2>
-          <p className="text-center">{scientificName}</p>
+          <h2 className="text-center">Common Name: {commonName}</h2>
+          <h5 className="text-center">Scientfic Name: {scientificName}</h5>
         </div>
       )}
 
@@ -112,20 +110,11 @@ function BirdContainer() {
         <div />
       ) : (
         <div>
-          <h2 className="text-center">Location</h2>
           {location === "" ? (
             <div />
           ) : (
-            <p className="text-center">{location}</p>
+            <h5 className="text-center">Location: {location}</h5>
           )}
-          <AudioPlayer
-            src={file}
-            autoPlay={false}
-            autoPlayAfterSrcChange={false}
-            showSkipControls={false}
-            showJumpControls={false}
-            volume={0.5}
-          />
           <VisualizationDropdown
             handleChange={(visType, handleVisChange)}
           ></VisualizationDropdown>
@@ -139,6 +128,15 @@ function BirdContainer() {
           <Graph
             data={JSON.parse(graph).data}
             layout={JSON.parse(graph).layout}
+          />
+
+          <AudioPlayer
+            src={file}
+            autoPlay={false}
+            autoPlayAfterSrcChange={false}
+            showSkipControls={false}
+            showJumpControls={false}
+            volume={0.5}
           />
         </div>
       )}

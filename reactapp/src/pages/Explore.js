@@ -7,7 +7,6 @@ function Explore() {
       <div className="container-fluid ">
         <div className="row justify-content-center">
           <BirdContainer />
-          <BirdContainer />
         </div>
       </div>
     </div>
