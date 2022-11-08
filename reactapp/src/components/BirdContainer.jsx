@@ -18,6 +18,26 @@ function BirdContainer() {
   const [fileNumber, setFileNumber] = useState("");
   const [graph, setGraph] = useState("");
   const [visType, setVisType] = useState("");
+  const [image, setImage] = useState("");
+
+  function fetchImage() {
+    const searchName = commonName.replace(" ", "%20");
+    fetch(
+      "https://api.inaturalist.org/v1/taxa/autocomplete?q=" +
+        searchName +
+        "&rank=species"
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        try {
+          setImage(
+            data.results[0].default_photo.medium_url.replace("medium", "large")
+          );
+        } catch {
+          setImage("Image not found");
+        }
+      });
+  }
 
   function fetchBirdDetails() {
     fetch("/api/bird-details/" + bird)
@@ -51,6 +71,12 @@ function BirdContainer() {
       fetchBirdDetails();
     }
   }, [bird]);
+
+  useEffect(() => {
+    if (commonName !== "") {
+      fetchImage();
+    }
+  }, [commonName]);
 
   //Information updated when bird or audio file is changed
   useEffect(() => {
@@ -87,6 +113,7 @@ function BirdContainer() {
   return (
     <div className="col-lg-6 p-5">
       <BirdDropdown handleChange={handleBirdChange}></BirdDropdown>
+
       {bird === "" ? (
         <div />
       ) : (
@@ -95,6 +122,26 @@ function BirdContainer() {
           file={fileNumber}
           handleChange={handleFileChange}
         ></AudioFileDropdown>
+      )}
+
+      {file === "" ? (
+        <div />
+      ) : (
+        <div>
+          <VisualizationDropdown
+            handleChange={(visType, handleVisChange)}
+          ></VisualizationDropdown>
+        </div>
+      )}
+
+      {image === "" ? (
+        <div />
+      ) : (
+        <img
+          src={image}
+          alt={"Image of a " + commonName}
+          className="bird_img"
+        />
       )}
 
       {commonName === "" || scientificName === "" ? (
@@ -106,39 +153,32 @@ function BirdContainer() {
         </div>
       )}
 
-      {file === "" ? (
+      {location === "" ? (
         <div />
       ) : (
-        <div>
-          {location === "" ? (
-            <div />
-          ) : (
-            <h5 className="text-center">Location: {location}</h5>
-          )}
-          <VisualizationDropdown
-            handleChange={(visType, handleVisChange)}
-          ></VisualizationDropdown>
-        </div>
+        <h5 className="text-center">Location: {location}</h5>
       )}
 
       {graph === "" ? (
         <div />
       ) : (
-        <div>
-          <Graph
-            data={JSON.parse(graph).data}
-            layout={JSON.parse(graph).layout}
-          />
+        <Graph
+          data={JSON.parse(graph).data}
+          layout={JSON.parse(graph).layout}
+        />
+      )}
 
-          <AudioPlayer
-            src={file}
-            autoPlay={false}
-            autoPlayAfterSrcChange={false}
-            showSkipControls={false}
-            showJumpControls={false}
-            volume={0.5}
-          />
-        </div>
+      {file === "" ? (
+        <div />
+      ) : (
+        <AudioPlayer
+          src={file}
+          autoPlay={false}
+          autoPlayAfterSrcChange={false}
+          showSkipControls={false}
+          showJumpControls={false}
+          volume={0.5}
+        />
       )}
     </div>
   );

@@ -120,8 +120,8 @@ def bird_spectrogram(request, name, number):
         colorscale=[
             [0, '#0c082a'],
             [0.5, '#0c082a'],
-            [0.8, '#4691C7'],
-            [.9, '#4EA2DE'],
+            [0.8, '#2E6185'],
+            [.9, '#4285b5'],
             [1, '#5ABAFF'],
         ]))
 
