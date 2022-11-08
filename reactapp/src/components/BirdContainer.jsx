@@ -122,20 +122,6 @@ function BirdContainer() {
   ];
   return (
     <div className="col-lg-6 p-5">
-      <ReactGlobe
-        height={500}
-        width={500}
-        backgroundColor="#f00"
-        globeBackgroundTexture={null}
-        markers={markers}
-        options={{
-          ambientLightIntensity: 0.5,
-          cameraAutoRotateSpeed: 0,
-          globeGlowRadiusScale: 0,
-        }}
-        className="globe"
-      />
-
       <BirdDropdown handleChange={handleBirdChange}></BirdDropdown>
 
       {bird === "" ? (
@@ -180,7 +166,30 @@ function BirdContainer() {
       {location === "" ? (
         <div />
       ) : (
-        <h5 className="text-center">Location: {location}</h5>
+        <div>
+          <h5 className="text-center">Location: {location}</h5>
+          <div
+            style={{
+              width: 250,
+              height: 250,
+              display: "block",
+              margin: "auto",
+            }}
+          >
+            <ReactGlobe
+              height={250}
+              width={250}
+              backgroundColor="#f00"
+              globeBackgroundTexture={null}
+              markers={markers}
+              options={{
+                ambientLightIntensity: 0.5,
+                cameraAutoRotateSpeed: 0,
+                globeGlowRadiusScale: 0,
+              }}
+            />
+          </div>
+        </div>
       )}
 
       {graph === "" ? (
