@@ -8,6 +8,7 @@ import BirdDropdown from "./BirdDropdown";
 import AudioFileDropdown from "./AudioFileDropdown";
 
 import "react-h5-audio-player/lib/styles.css";
+import ReactGlobe from "react-globe";
 
 function BirdContainer() {
   const [bird, setBird] = useState("");
@@ -110,8 +111,31 @@ function BirdContainer() {
     setVisType(selection.value);
   };
 
+  const markers = [
+    {
+      id: "Bird1",
+      city: "Singapore",
+      color: "orange",
+      coordinates: [35.386, -84.125],
+      value: 500,
+    },
+  ];
   return (
     <div className="col-lg-6 p-5">
+      <ReactGlobe
+        height={500}
+        width={500}
+        backgroundColor="#f00"
+        globeBackgroundTexture={null}
+        markers={markers}
+        options={{
+          ambientLightIntensity: 0.5,
+          cameraAutoRotateSpeed: 0,
+          globeGlowRadiusScale: 0,
+        }}
+        className="globe"
+      />
+
       <BirdDropdown handleChange={handleBirdChange}></BirdDropdown>
 
       {bird === "" ? (

@@ -106,3 +106,7 @@ h5 {
   margin: auto;
   border-radius: 0.25em;
 }
+.canvas {
+  display: block !important;
+  margin: auto !important;
+}
