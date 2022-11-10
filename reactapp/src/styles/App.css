@@ -95,7 +95,7 @@ body {
 
 h2 {
   color: #fff;
-  font-size: 2em;
+  font-size: 1.15em;
 }
 
 h5 {
@@ -105,9 +105,9 @@ h5 {
 
 .bird_img {
   aspect-ratio: 1.25/1;
-  width: 75%;
+  width: 50%;
   object-fit: cover;
   display: block;
-  margin: auto;
+  margin: left;
   border-radius: 0.25em;
 }

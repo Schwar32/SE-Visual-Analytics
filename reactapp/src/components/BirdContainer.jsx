@@ -144,36 +144,25 @@ function BirdContainer() {
         </div>
       )}
 
-      {image === "" ? (
+      {image === "" || commonName === "" || scientificName ==="" || location === "" ? (
         <div />
       ) : (
+        <div display="">
         <img
           src={image}
           alt={"Image of a " + commonName}
           className="bird_img"
+          
         />
-      )}
+          <h2 className="text-left" margin="left">{commonName}</h2>
+          <h5 className="text-left" margin="left">{scientificName}</h5>
 
-      {commonName === "" || scientificName === "" ? (
-        <div />
-      ) : (
-        <div>
-          <h2 className="text-center">Common Name: {commonName}</h2>
-          <h5 className="text-center">Scientfic Name: {scientificName}</h5>
-        </div>
-      )}
-
-      {location === "" ? (
-        <div />
-      ) : (
-        <div>
-          <h5 className="text-center">Location: {location}</h5>
           <div
             style={{
               width: 250,
               height: 250,
-              display: "block",
-              margin: "auto",
+              display: "cover",
+              margin: "right",
             }}
           >
             <ReactGlobe
@@ -188,9 +177,49 @@ function BirdContainer() {
                 globeGlowRadiusScale: 0,
               }}
             />
+            <h5 className="text-center">{location}</h5>
+          </div>
+
+        </div>
+        
+        
+
+        
+      )}
+
+      
+
+      {/* {location === "" ? (
+        <div />
+      ) : (
+        <div>
+          
+          <div
+            style={{
+              width: 250,
+              height: 250,
+              display: "cover",
+              margin: "right",
+            }}
+          >
+            <ReactGlobe
+              height={250}
+              width={250}
+              backgroundColor="#f00"
+              globeBackgroundTexture={null}
+              markers={markers}
+              options={{
+                ambientLightIntensity: 0.5,
+                cameraAutoRotateSpeed: 0,
+                globeGlowRadiusScale: 0,
+              }}
+            />
+            <h5 className="text-center">{location}</h5>
           </div>
         </div>
-      )}
+      )} */}
+
+      
 
       {graph === "" ? (
         <div />
