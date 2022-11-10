@@ -10,16 +10,20 @@
 
 .navbar-brand {
   font-weight: bold;
-  margin-left: 2em;
+  margin-left: 1.25em;
 }
 
 .navbar-nav {
   margin-left: auto;
-  margin-right: 1em;
+  margin-right: 1.25em;
+}
+
+.navbar-toggler {
+  margin-right: 1.25em;
 }
 
 .navbar-nav > li {
-  margin-right: 2em;
+  margin-right: 1.5em;
   margin-left: auto;
 }
 

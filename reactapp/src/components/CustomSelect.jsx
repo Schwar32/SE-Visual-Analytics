@@ -11,6 +11,8 @@ function CustomSelect(props) {
       backgroundColor: BACKGROUND_COLOR,
       marginBottom: "2em",
       borderRadius: ".25em",
+      borderColor: "#ffffffdf",
+      borderWidth: "1px",
     }),
     menu: (defaultStyles) => ({
       ...defaultStyles,
