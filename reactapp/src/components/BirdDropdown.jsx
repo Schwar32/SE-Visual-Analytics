@@ -21,7 +21,7 @@ function BirdDropdown({ handleChange }) {
   }, []);
 
   return (
-    <div>
+    <div className="bird-dropdown" style={{ padding: 0 }}>
       <CustomSelect
         value={bird}
         options={options}

@@ -15,6 +15,7 @@ function BirdContainer({ container }) {
   const [location, setLocation] = useState("");
   const [file, setFile] = useState("");
   const [fileNumber, setFileNumber] = useState("");
+  const [fileCount, setFileCount] = useState("");
   const [graph, setGraph] = useState("");
   const [visType, setVisType] = useState("");
   const [image, setImage] = useState("");
@@ -64,6 +65,16 @@ function BirdContainer({ container }) {
       });
   }
 
+  useEffect(() => {
+    if (bird !== "") {
+      fetch("/api/bird-audio-files/" + bird)
+        .then((response) => response.json())
+        .then((data) => {
+          setFileCount(data.length);
+        });
+    }
+  }, [bird]);
+
   //Information updated when bird is changed
   useEffect(() => {
     if (bird !== "") {
@@ -101,15 +112,17 @@ function BirdContainer({ container }) {
     setFileNumber(0);
   };
 
-  const handleFileChange = (selection) => {
-    setFileNumber(selection.value);
-  };
-
   const handleVisChange = (selection) => {
     if (selection.value !== visType) {
       setVisType(selection.value);
     }
   };
+
+  function nextFile() {
+    if (bird !== "") {
+      setFileNumber((fileNumber + 1) % fileCount);
+    }
+  }
 
   const markers = [
     {
@@ -122,20 +135,12 @@ function BirdContainer({ container }) {
   ];
   return (
     <div className="col-lg-6 p-5">
-      <BirdDropdown handleChange={handleBirdChange}></BirdDropdown>
-
-      {bird === "" ? (
-        <div />
-      ) : (
-        /*
-        <AudioFileDropdown
-          bird={bird}
-          file={fileNumber}
-          handleChange={handleFileChange}
-        ></AudioFileDropdown>
-        */
-        <div />
-      )}
+      <div className="bird-select">
+        <BirdDropdown handleChange={handleBirdChange}></BirdDropdown>
+        <button className="next-btn" onClick={nextFile}>
+          {">"}
+        </button>
+      </div>
 
       {file === "" ? (
         <div />

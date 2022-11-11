@@ -144,4 +144,30 @@ h5 {
     aspect-ratio: 5/4.5;
     width: 100%;
   }
+  .next-btn {
+    flex-grow: 0.5;
+  }
+}
+
+.bird-select {
+  display: flex;
+  flex: 1fr 1fr;
+}
+
+.next-btn {
+  flex-grow: 0.1;
+  height: 2.5em;
+  border: 1px solid white;
+  background-color: #3b365a;
+  text-align: center;
+  color: white;
+  border-radius: 0 0.25em 0 0;
+}
+
+.next-btn:active {
+  background-color: #6f67a9;
+}
+
+.bird-dropdown {
+  flex-grow: 1;
 }
