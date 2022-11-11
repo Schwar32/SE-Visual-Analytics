@@ -28,7 +28,7 @@
 }
 
 .plotly-chart {
-  aspect-ratio: 5/3.5;
+  aspect-ratio: 5/4;
   width: 100%;
 }
 
@@ -120,7 +120,7 @@ h5 {
 
 .vis-select-button {
   flex-grow: 1;
-  height: 2.5em;
+  height: 2.5rem;
   background-color: #3b365a;
   color: white;
   border: 1px solid white;
@@ -134,4 +134,14 @@ h5 {
 .vis-select-button-selected {
   background-color: #6f67a9;
   outline: none;
+}
+
+@media (max-width: 500px) {
+  .vis-select-button {
+    font-size: 0.7em;
+  }
+  .plotly-chart {
+    aspect-ratio: 5/4.5;
+    width: 100%;
+  }
 }

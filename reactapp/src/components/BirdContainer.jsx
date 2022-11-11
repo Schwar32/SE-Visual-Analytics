@@ -3,9 +3,7 @@ import React, { useEffect, useState } from "react";
 import AudioPlayer from "react-h5-audio-player";
 
 import Graph from "./Graph";
-import VisualizationDropdown from "./VisualizationDropdown";
 import BirdDropdown from "./BirdDropdown";
-import AudioFileDropdown from "./AudioFileDropdown";
 import VisTypeSelect from "./VisTypeSelect";
 import "react-h5-audio-player/lib/styles.css";
 import ReactGlobe from "react-globe";
@@ -118,7 +116,7 @@ function BirdContainer({ container }) {
       id: "Bird1",
       city: "Singapore",
       color: "orange",
-      coordinates: [35.386, -84.125],
+      coordinates: [40.73061, -73.935242],
       value: 500,
     },
   ];
@@ -147,35 +145,27 @@ function BirdContainer({ container }) {
             handleChange={handleVisChange}
             container={container}
           ></VisTypeSelect>
+
+          <AudioPlayer
+            src={file}
+            autoPlay={false}
+            autoPlayAfterSrcChange={false}
+            showSkipControls={false}
+            showJumpControls={false}
+            volume={0.5}
+          />
+          {graph === "" ? (
+            <div />
+          ) : (
+            <Graph
+              data={JSON.parse(graph).data}
+              layout={JSON.parse(graph).layout}
+            />
+          )}
         </div>
       )}
 
-      {file === "" ? (
-        <div />
-      ) : (
-        <AudioPlayer
-          src={file}
-          autoPlay={false}
-          autoPlayAfterSrcChange={false}
-          showSkipControls={false}
-          showJumpControls={false}
-          volume={0.5}
-        />
-      )}
-
       {graph === "" ? (
-        <div />
-      ) : (
-        <Graph
-          data={JSON.parse(graph).data}
-          layout={JSON.parse(graph).layout}
-        />
-      )}
-
-      {image === "" ||
-      commonName === "" ||
-      scientificName === "" ||
-      location === "" ? (
         <div />
       ) : (
         <div display="">
@@ -206,45 +196,16 @@ function BirdContainer({ container }) {
               globeBackgroundTexture={null}
               markers={markers}
               options={{
+                globeCloudsOpacity: 1,
                 ambientLightIntensity: 0.5,
                 cameraAutoRotateSpeed: 0,
-                globeGlowRadiusScale: 0,
+                globeGlowRadiusScale: 0.1,
               }}
             />
             <h5 className="text-center">{location}</h5>
           </div>
         </div>
       )}
-
-      {/* {location === "" ? (
-        <div />
-      ) : (
-        <div>
-          
-          <div
-            style={{
-              width: 250,
-              height: 250,
-              display: "cover",
-              margin: "right",
-            }}
-          >
-            <ReactGlobe
-              height={250}
-              width={250}
-              backgroundColor="#f00"
-              globeBackgroundTexture={null}
-              markers={markers}
-              options={{
-                ambientLightIntensity: 0.5,
-                cameraAutoRotateSpeed: 0,
-                globeGlowRadiusScale: 0,
-              }}
-            />
-            <h5 className="text-center">{location}</h5>
-          </div>
-        </div>
-      )} */}
     </div>
   );
 }
