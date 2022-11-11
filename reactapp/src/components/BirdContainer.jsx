@@ -6,11 +6,11 @@ import Graph from "./Graph";
 import VisualizationDropdown from "./VisualizationDropdown";
 import BirdDropdown from "./BirdDropdown";
 import AudioFileDropdown from "./AudioFileDropdown";
-
+import VisTypeSelect from "./VisTypeSelect";
 import "react-h5-audio-player/lib/styles.css";
 import ReactGlobe from "react-globe";
 
-function BirdContainer() {
+function BirdContainer({ container }) {
   const [bird, setBird] = useState("");
   const [commonName, setCommonName] = useState("");
   const [scientificName, setScientificName] = useState("");
@@ -108,7 +108,9 @@ function BirdContainer() {
   };
 
   const handleVisChange = (selection) => {
-    setVisType(selection.value);
+    if (selection.value !== visType) {
+      setVisType(selection.value);
+    }
   };
 
   const markers = [
@@ -127,20 +129,24 @@ function BirdContainer() {
       {bird === "" ? (
         <div />
       ) : (
+        /*
         <AudioFileDropdown
           bird={bird}
           file={fileNumber}
           handleChange={handleFileChange}
         ></AudioFileDropdown>
+        */
+        <div />
       )}
 
       {file === "" ? (
         <div />
       ) : (
         <div>
-          <VisualizationDropdown
-            handleChange={(visType, handleVisChange)}
-          ></VisualizationDropdown>
+          <VisTypeSelect
+            handleChange={handleVisChange}
+            container={container}
+          ></VisTypeSelect>
         </div>
       )}
 

@@ -9,10 +9,11 @@ function CustomSelect(props) {
       ...defaultStyles,
       color: COLOR,
       backgroundColor: BACKGROUND_COLOR,
-      marginBottom: "2em",
-      borderRadius: ".25em",
+      marginBottom: "0em",
+      borderRadius: ".35em .35em 0 0",
       borderColor: "#ffffffdf",
       borderWidth: "1px",
+      height: "2.5em",
     }),
     menu: (defaultStyles) => ({
       ...defaultStyles,
