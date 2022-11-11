@@ -23,3 +23,7 @@
 /reactappyarn-error.log*
 
 .idea
+
+/reactapp/yarn.lock
+/reactapp/yarn-error.log
+/staticfiles

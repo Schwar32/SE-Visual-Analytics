@@ -144,18 +144,46 @@ function BirdContainer() {
         </div>
       )}
 
-      {image === "" || commonName === "" || scientificName ==="" || location === "" ? (
+      {file === "" ? (
+        <div />
+      ) : (
+        <AudioPlayer
+          src={file}
+          autoPlay={false}
+          autoPlayAfterSrcChange={false}
+          showSkipControls={false}
+          showJumpControls={false}
+          volume={0.5}
+        />
+      )}
+
+      {graph === "" ? (
+        <div />
+      ) : (
+        <Graph
+          data={JSON.parse(graph).data}
+          layout={JSON.parse(graph).layout}
+        />
+      )}
+
+      {image === "" ||
+      commonName === "" ||
+      scientificName === "" ||
+      location === "" ? (
         <div />
       ) : (
         <div display="">
-        <img
-          src={image}
-          alt={"Image of a " + commonName}
-          className="bird_img"
-          
-        />
-          <h2 className="text-left" margin="left">{commonName}</h2>
-          <h5 className="text-left" margin="left">{scientificName}</h5>
+          <img
+            src={image}
+            alt={"Image of a " + commonName}
+            className="bird_img"
+          />
+          <h2 className="text-left" margin="left">
+            {commonName}
+          </h2>
+          <h5 className="text-left" margin="left">
+            {scientificName}
+          </h5>
 
           <div
             style={{
@@ -179,15 +207,8 @@ function BirdContainer() {
             />
             <h5 className="text-center">{location}</h5>
           </div>
-
         </div>
-        
-        
-
-        
       )}
-
-      
 
       {/* {location === "" ? (
         <div />
@@ -218,30 +239,6 @@ function BirdContainer() {
           </div>
         </div>
       )} */}
-
-      
-
-      {graph === "" ? (
-        <div />
-      ) : (
-        <Graph
-          data={JSON.parse(graph).data}
-          layout={JSON.parse(graph).layout}
-        />
-      )}
-
-      {file === "" ? (
-        <div />
-      ) : (
-        <AudioPlayer
-          src={file}
-          autoPlay={false}
-          autoPlayAfterSrcChange={false}
-          showSkipControls={false}
-          showJumpControls={false}
-          volume={0.5}
-        />
-      )}
     </div>
   );
 }
