@@ -10,4 +10,5 @@ urlpatterns = [
     path('bird-oscillogram/<str:name>/<str:number>', views.bird_oscillogram, name="bird-oscillogram"),
     path('bird-fourier-transform/<str:name>/<str:number>', views.bird_fourier_transform, name="bird-fourier-transform"),
     path('bird-spectrogram/<str:name>/<str:number>', views.bird_spectrogram, name="bird-spectrogram"),
+    path('bird-predict-call', views.predict_call, name="bird-predict-call"),
 ]

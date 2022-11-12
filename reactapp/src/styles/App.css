@@ -110,6 +110,7 @@ h5 {
   display: block;
   margin: left;
   border-radius: 0.25em;
+  border: 3px solid white;
 }
 
 .vis-select {
