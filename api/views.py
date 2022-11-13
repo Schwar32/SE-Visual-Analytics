@@ -18,12 +18,12 @@ from urllib.request import urlopen
 import io
 import ssl
 
-import librosa
-import tensorflow as tf
-import tensorflow_io as tfio
+#import librosa
+#import tensorflow as tf
+#import tensorflow_io as tfio
 import pandas as pd
-import keras.models
-from sklearn.preprocessing import LabelEncoder
+#import keras.models
+#from sklearn.preprocessing import LabelEncoder
 
 
 ssl._create_default_https_context = ssl._create_unverified_context

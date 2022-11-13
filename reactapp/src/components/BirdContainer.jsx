@@ -180,10 +180,10 @@ function BirdContainer({ container }) {
             className="bird_img"
           />
           <h2 className="text-left" margin="left">
-            {commonName}
+            Common: {commonName}
           </h2>
           <h5 className="text-left" margin="left">
-            {scientificName}
+            Genus: {scientificName}
           </h5>
 
           <div
@@ -191,7 +191,7 @@ function BirdContainer({ container }) {
               width: 250,
               height: 250,
               display: "cover",
-              margin: "right",
+              margin: "left"
             }}
           >
             <ReactGlobe
@@ -207,8 +207,10 @@ function BirdContainer({ container }) {
                 globeGlowRadiusScale: 0.1,
               }}
             />
-            <h5 className="text-center">{location}</h5>
+            
           </div>
+          <h6 className="text-right"
+                >Location: {location}</h6>
         </div>
       )}
     </div>
