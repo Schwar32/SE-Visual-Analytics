@@ -19,6 +19,9 @@ function BirdContainer({ container }) {
   const [graph, setGraph] = useState("");
   const [visType, setVisType] = useState("");
   const [image, setImage] = useState("");
+  const [imageCred, setImageCred] = useState("");
+  const [wikiLink, setWikiLink] = useState("");
+  const [infoHidden, setInfoHidden] = useState(true);
 
   function fetchImage() {
     const searchName = commonName.replace(" ", "%20");
@@ -33,8 +36,12 @@ function BirdContainer({ container }) {
           setImage(
             data.results[0].default_photo.medium_url.replace("medium", "large")
           );
+          setImageCred(data.results[0].default_photo.attribution);
+          setWikiLink(data.results[0].wikipedia_url);
         } catch {
           setImage("Image not found");
+          setImageCred("");
+          setWikiLink("");
         }
       });
   }
@@ -133,12 +140,13 @@ function BirdContainer({ container }) {
       value: 500,
     },
   ];
+
   return (
     <div className="col-lg-6 p-5">
       <div className="bird-select">
         <BirdDropdown handleChange={handleBirdChange}></BirdDropdown>
         <button className="next-btn" onClick={nextFile}>
-          {">"}
+          {"Next Call"}
         </button>
       </div>
 
@@ -173,44 +181,57 @@ function BirdContainer({ container }) {
       {graph === "" ? (
         <div />
       ) : (
-        <div display="">
-          <img
-            src={image}
-            alt={"Image of a " + commonName}
-            className="bird_img"
-          />
-          <h2 className="text-left" margin="left">
-            Common: {commonName}
-          </h2>
-          <h5 className="text-left" margin="left">
-            Genus: {scientificName}
-          </h5>
-
-          <div
-            style={{
-              width: 250,
-              height: 250,
-              display: "cover",
-              margin: "left"
+        <div className="info-section">
+          <p
+            onClick={() => {
+              setInfoHidden(!infoHidden);
             }}
           >
-            <ReactGlobe
-              height={250}
-              width={250}
-              backgroundColor="#f00"
-              globeBackgroundTexture={null}
-              markers={markers}
-              options={{
-                globeCloudsOpacity: 1,
-                ambientLightIntensity: 0.5,
-                cameraAutoRotateSpeed: 0,
-                globeGlowRadiusScale: 0.1,
-              }}
-            />
-            
-          </div>
-          <h6 className="text-right"
-                >Location: {location}</h6>
+            General Information ∨
+          </p>
+          {infoHidden ? (
+            <div />
+          ) : (
+            <div>
+              <img
+                src={image}
+                alt={"Image of a " + commonName}
+                className="bird_img"
+              />
+              <p className="image-credits">{imageCred}</p>
+              <h2 className="text-left" margin="left">
+                Common: {commonName}
+              </h2>
+              <h5 className="text-left" margin="left">
+                Genus: {scientificName}
+              </h5>
+
+              <div
+                style={{
+                  width: 250,
+                  height: 250,
+                  display: "cover",
+                  margin: "left",
+                }}
+              >
+                <ReactGlobe
+                  height={250}
+                  width={250}
+                  backgroundColor="#f00"
+                  globeBackgroundTexture={null}
+                  markers={markers}
+                  options={{
+                    globeCloudsOpacity: 1,
+                    ambientLightIntensity: 0.5,
+                    cameraAutoRotateSpeed: 0,
+                    globeGlowRadiusScale: 0,
+                  }}
+                />
+                <a href={wikiLink}>{wikiLink}</a>
+              </div>
+              <h6 className="text-right">Location: {location}</h6>
+            </div>
+          )}
         </div>
       )}
     </div>
