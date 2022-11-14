@@ -183,6 +183,7 @@ function BirdContainer({ container }) {
       ) : (
         <div className="info-section">
           <p
+            className="info-btn"
             onClick={() => {
               setInfoHidden(!infoHidden);
             }}
