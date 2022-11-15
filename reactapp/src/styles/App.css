@@ -200,13 +200,13 @@ h6 {
 }
 
 .info-btn {
-  color: white;
+  color: #ffffff80;
   display: block;
-  margin: 3em auto 4em auto;
+  margin: 2em auto 4em auto;
   text-align: center;
 }
 
 .info-btn:hover {
-  color: #6f67a9;
+  color: #fff;
   cursor: pointer;
 }
