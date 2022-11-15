@@ -202,14 +202,14 @@ function BirdContainer({ container }) {
                 alt={"Image of a " + commonName}
                 className="bird_img"
               />
-              <p className="image-credits">{imageCred}</p>
+              
               <h2 className="text-left" margin="left">
-                Common: {commonName}
+                Common Name: {commonName}
               </h2>
               <h5 className="text-left" margin="left">
-                Genus: {scientificName}
+                Scientific Name: {scientificName}
               </h5>
-
+              <p className="image-credits">{imageCred}</p>
               <div
                 style={{
                   width: 250,

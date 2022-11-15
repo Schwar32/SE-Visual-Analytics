@@ -96,25 +96,24 @@ body {
 h2 {
   color: #fff !important;
   font-size: 1.15em !important;
-  float: left !important;
-  padding-top: 80px !important;
-  padding-left: 15px !important;
+  padding-top: 2em !important;
+  padding-left: 6em !important;
+  margin: 2em auto;
 }
 
 h5 {
   color: #d7d7d7 !important;
   font-size: 1.15em !important;
-  float: left !important;
-  padding-top: 10px !important;
-  padding-left: 15px !important;
+  padding-top: 2em !important;
+  padding-left: 6em !important;
+  margin: 2em auto;
 }
 
 h6 {
   color: #d7d7d7 !important;
   font-size: 1.15em !important;
-  float: left !important;
-  padding-top: 85px !important;
-  padding-left: 310px !important;
+  padding-top: 5.25em !important;
+  padding-left: 6em !important;
 }
 
 .bird_img {
