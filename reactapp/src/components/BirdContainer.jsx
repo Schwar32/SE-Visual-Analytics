@@ -141,6 +141,14 @@ function BirdContainer({ container }) {
     },
   ];
 
+  function updateInfoSection(e) {
+    setInfoHidden(!infoHidden);
+    e.target.className = "info-btn";
+    if (infoHidden) {
+      e.target.className += " info-btn-selected";
+    }
+  }
+
   return (
     <div className="col-lg-6 p-5">
       <div className="bird-select">
@@ -182,12 +190,7 @@ function BirdContainer({ container }) {
         <div />
       ) : (
         <div className="info-section">
-          <p
-            className="info-btn"
-            onClick={() => {
-              setInfoHidden(!infoHidden);
-            }}
-          >
+          <p className="info-btn" onClick={updateInfoSection}>
             General Information ∨
           </p>
           {infoHidden ? (
