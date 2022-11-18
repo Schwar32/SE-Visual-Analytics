@@ -199,14 +199,12 @@ function BirdContainer({ container }) {
                 Scientific Name: {scientificName}
               </h5>
               <p className="image-credits">{imageCred}</p>
-              <div>
-                <VisGlobe
-                  location={location}
-                  latitude={latitude}
-                  longitude={longitude}
-                />
-                <a href={wikiLink}>{wikiLink}</a>
-              </div>
+              <VisGlobe
+                location={location}
+                latitude={latitude}
+                longitude={longitude}
+              />
+              <a href={wikiLink}>{wikiLink}</a>
               <h6 className="text-right">Location: {location}</h6>
             </div>
           )}
