@@ -206,8 +206,17 @@ def detailed_prediction(model, label_encoder, file_path):
 
 @api_view(['GET'])
 def predict_call(request):
-    model = keras.models.load_model("./staticfiles/model")
-    label_encoder = load_encoder()
-    test_file = "./staticfiles/XC460987 - American Crow - Corvus brachyrhynchos.mp3"
-    guesses = detailed_prediction(model, label_encoder, test_file)
-    return Response(guesses)
+    return Response("guesses")
+
+"""
+    df = pd.read_csv('./staticfiles/train_metadata.csv')
+    birds = Bird.objects.all()
+    for bird in birds:
+        file_name = bird.call.split("/")[-1]
+        row = df.loc[df['filename'] == file_name]
+        bird.latitude = row['latitude'].values[0]
+        bird.longitude = row['longitude'].values[0]
+        bird.save()
+
+    return Response("guesses")
+    """

@@ -9,6 +9,8 @@ class Bird(models.Model):
     call = models.CharField(default="", max_length=500)
     call_number = models.IntegerField(default=-1)
     call_types = models.CharField(default="", max_length=200)
+    latitude = models.FloatField(default=0)
+    longitude = models.FloatField(default=0)
 
     def __str__(self):
         return self.short_name + "-" + str(self.call_number)

@@ -11,4 +11,4 @@ class BirdInfoSerializer(serializers.ModelSerializer):
 class BirdAudioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bird
-        fields = ['location', 'call', 'call_number', 'call_types']
+        fields = ['location', 'latitude', 'longitude', 'call', 'call_number', 'call_types']

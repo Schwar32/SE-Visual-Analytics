@@ -1,13 +1,12 @@
 
 import os
-from .models import Bird
+from models import Bird
 import soundfile as sf
-
+import pandas as pd
 
 
 def db_setup():
     print("Running")
-    geolocator = Nominatim(user_agent="geoapiExercises")
 
     df = pd.read_csv('./api/train_metadata.csv')
     filtered_df = df.loc[(df["secondary_labels"] == "[]") & (df["rating"] >= 5)]
