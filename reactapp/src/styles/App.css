@@ -213,3 +213,8 @@ h6 {
 .info-btn-selected {
   color: #fff;
 }
+
+.vis-globe {
+  display: block;
+  margin: 7.5em;
+}

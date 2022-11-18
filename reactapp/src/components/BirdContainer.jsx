@@ -6,13 +6,15 @@ import Graph from "./Graph";
 import BirdDropdown from "./BirdDropdown";
 import VisTypeSelect from "./VisTypeSelect";
 import "react-h5-audio-player/lib/styles.css";
-import ReactGlobe from "react-globe";
+import VisGlobe from "./VisGlobe";
 
 function BirdContainer({ container }) {
   const [bird, setBird] = useState("");
   const [commonName, setCommonName] = useState("");
   const [scientificName, setScientificName] = useState("");
   const [location, setLocation] = useState("");
+  const [latitude, setLatitude] = useState("");
+  const [longitude, setLongitude] = useState("");
   const [file, setFile] = useState("");
   const [fileNumber, setFileNumber] = useState("");
   const [fileCount, setFileCount] = useState("");
@@ -60,6 +62,8 @@ function BirdContainer({ container }) {
       .then((response) => response.json())
       .then((data) => {
         setLocation(data.location);
+        setLatitude(data.latitude);
+        setLongitude(data.longitude);
         setFile(data.call);
       });
   }
@@ -99,11 +103,6 @@ function BirdContainer({ container }) {
   useEffect(() => {
     if (bird !== "" && fileNumber !== "") {
       fetchAudioDeatils();
-      //fetch("/api/bird-oscillogram/" + bird + "/" + fileNumber);
-
-      //fetch("/api/bird-fourier-transform/" + bird + "/" + fileNumber);
-
-      //fetch("/api/bird-spectrogram/" + bird + "/" + fileNumber);
     }
   }, [bird, fileNumber]);
 
@@ -130,16 +129,6 @@ function BirdContainer({ container }) {
       setFileNumber((fileNumber + 1) % fileCount);
     }
   }
-
-  const markers = [
-    {
-      id: "Bird1",
-      city: "Singapore",
-      color: "orange",
-      coordinates: [40.73061, -73.935242],
-      value: 500,
-    },
-  ];
 
   function updateInfoSection(e) {
     setInfoHidden(!infoHidden);
@@ -202,7 +191,7 @@ function BirdContainer({ container }) {
                 alt={"Image of a " + commonName}
                 className="bird_img"
               />
-              
+
               <h2 className="text-left" margin="left">
                 Common Name: {commonName}
               </h2>
@@ -210,26 +199,11 @@ function BirdContainer({ container }) {
                 Scientific Name: {scientificName}
               </h5>
               <p className="image-credits">{imageCred}</p>
-              <div
-                style={{
-                  width: 250,
-                  height: 250,
-                  display: "cover",
-                  margin: "left",
-                }}
-              >
-                <ReactGlobe
-                  height={250}
-                  width={250}
-                  backgroundColor="#f00"
-                  globeBackgroundTexture={null}
-                  markers={markers}
-                  options={{
-                    globeCloudsOpacity: 1,
-                    ambientLightIntensity: 0.5,
-                    cameraAutoRotateSpeed: 0,
-                    globeGlowRadiusScale: 0,
-                  }}
+              <div>
+                <VisGlobe
+                  location={location}
+                  latitude={latitude}
+                  longitude={longitude}
                 />
                 <a href={wikiLink}>{wikiLink}</a>
               </div>

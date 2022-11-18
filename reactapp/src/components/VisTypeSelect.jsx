@@ -1,10 +1,10 @@
 function VisTypeSelect({ handleChange, container }) {
-  const oscBtn = document.getElementById("oscillogram-button-" + container);
-  const fourBtn = document.getElementById(
-    "fourier-transform-button-" + container
-  );
-  const specBtn = document.getElementById("spectrogram-button-" + container);
   function onSelect(button) {
+    var oscBtn = document.getElementById("oscillogram-button-" + container);
+    var fourBtn = document.getElementById(
+      "fourier-transform-button-" + container
+    );
+    var specBtn = document.getElementById("spectrogram-button-" + container);
     oscBtn.className = "vis-select-button";
     fourBtn.className = "vis-select-button";
     specBtn.className = "vis-select-button";

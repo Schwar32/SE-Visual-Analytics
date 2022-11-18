@@ -24,6 +24,7 @@ import ssl
 import pandas as pd
 #import keras.models
 #from sklearn.preprocessing import LabelEncoder
+from geopy.geocoders import Nominatim
 
 
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -206,17 +207,23 @@ def detailed_prediction(model, label_encoder, file_path):
 
 @api_view(['GET'])
 def predict_call(request):
-    return Response("guesses")
-
-"""
     df = pd.read_csv('./staticfiles/train_metadata.csv')
     birds = Bird.objects.all()
-    for bird in birds:
-        file_name = bird.call.split("/")[-1]
-        row = df.loc[df['filename'] == file_name]
-        bird.latitude = row['latitude'].values[0]
-        bird.longitude = row['longitude'].values[0]
-        bird.save()
-
-    return Response("guesses")
     """
+    geolocator = Nominatim(user_agent="GetLoc")
+    for bird in birds:
+        print(bird)
+        location = geolocator.reverse(str(bird.latitude) + "," + str(bird.longitude), language='en')
+        print(location)
+        try:
+            address = location.raw['address']
+            country = address.get('country', '')
+            if country == "United States":
+                country = "United States of America"
+            bird.location = country
+        except:
+            bird.location = "unknown"
+            print("error")
+        bird.save()
+    """
+    return Response("guesses")
