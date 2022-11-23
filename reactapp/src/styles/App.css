@@ -2,6 +2,8 @@
 
 * {
   font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 .navbar {
@@ -88,45 +90,6 @@ body {
   background-color: #ffffff !important;
 }
 
-.testing {
-  display: block;
-  margin: 2em auto;
-}
-
-h2 {
-  color: #fff !important;
-  font-size: 1.15em !important;
-  padding-top: 2em !important;
-  padding-left: 6em !important;
-  margin: 2em auto;
-}
-
-h5 {
-  color: #d7d7d7 !important;
-  font-size: 1.15em !important;
-  padding-top: 2em !important;
-  padding-left: 6em !important;
-  margin: 2em auto;
-}
-
-h6 {
-  color: #d7d7d7 !important;
-  font-size: 1.15em !important;
-  padding-top: 5.25em !important;
-  padding-left: 6em !important;
-}
-
-.bird_img {
-  aspect-ratio: 1.25/1;
-  width: 50%;
-  object-fit: cover;
-  display: block;
-  margin: left;
-  float: left;
-  border-radius: 0.25em;
-  border: 1px solid white;
-}
-
 .vis-select {
   display: flex;
   flex: 1fr 1fr 1fr;
@@ -164,6 +127,12 @@ h6 {
   }
 }
 
+@media (max-width: 991px) {
+  .info-section {
+    flex-direction: column !important;
+  }
+}
+
 .bird-select {
   display: flex;
   flex: 1fr 1fr;
@@ -187,17 +156,6 @@ h6 {
   flex-grow: 1;
 }
 
-.info-section {
-  background-color: #150f3e00;
-  border-radius: 0.5em;
-  padding-bottom: 20em;
-  box-shadow: inset 0 0 1em #0c082a;
-}
-
-.image-credits {
-  color: #aaa;
-}
-
 .info-btn {
   color: #ffffff80;
   display: block;
@@ -214,7 +172,60 @@ h6 {
   color: #fff;
 }
 
-.vis-globe {
-  display: block;
-  margin: 7.5em;
+.info-section {
+  margin: 0;
+  display: flex;
+  flex: 0.25fr 0.75fr;
+  flex-direction: row;
+}
+
+.info-visuals {
+  flex-grow: 1;
+}
+
+.bird_img {
+  aspect-ratio: 1.25/1;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0.25em;
+  border: 1px solid white;
+  padding: 0;
+  margin: 0;
+}
+
+.image-credits {
+  font-size: 0.85em;
+  margin: 0;
+  text-align: center;
+  color: #aaa;
+  margin-top: 1em;
+}
+
+.info-text {
+  flex-grow: 1;
+  padding: 1em;
+  text-align: center;
+}
+
+.explore-globe-container {
+  padding: 0;
+  width: 100%;
+}
+
+.info {
+  width: 50%;
+  word-wrap: break-word;
+  color: #fff;
+  font-size: 1.15em;
+  text-align: center;
+  margin: 1em auto;
+}
+
+.wiki-link {
+  width: 50%;
+  font-size: 1.15em;
+  color: #fff;
+  word-wrap: break-word;
+  text-align: center;
+  margin: 1em auto;
 }

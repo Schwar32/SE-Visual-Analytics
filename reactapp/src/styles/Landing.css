@@ -1,0 +1,40 @@
+* {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #0c082a;
+  color: #fff;
+}
+
+.landing-title {
+  display: block;
+  text-align: center;
+  margin: 1em auto 1em auto;
+  font-size: 3em;
+  padding: 0 !important;
+}
+
+.landing-globe-container {
+  display: block;
+  margin: auto;
+  padding: 0;
+  width: 35%;
+}
+
+.landing-link {
+  display: block;
+  width: 25%;
+  text-decoration: none;
+  font-size: 1.5em;
+  color: #fffa;
+  margin: 2em auto 0 auto;
+  text-align: center;
+}
+
+.landing-link:hover {
+  text-decoration: none;
+  color: #fff;
+}
