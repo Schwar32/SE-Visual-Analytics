@@ -18,13 +18,12 @@ from urllib.request import urlopen
 import io
 import ssl
 
-import librosa
-import librosa.display
-import tensorflow as tf
-import tensorflow_io as tfio
+#import librosa
+#import tensorflow as tf
+#import tensorflow_io as tfio
 import pandas as pd
-import keras.models
-from sklearn.preprocessing import LabelEncoder
+#import keras.models
+#from sklearn.preprocessing import LabelEncoder
 from geopy.geocoders import Nominatim
 
 
@@ -98,7 +97,7 @@ def bird_fourier_transform(request, name, number):
     yf = rfft(data)
     xf = rfftfreq(int(N), 1 / sample_rate)
 
-    fig = px.line(x=xf[::25], y=np.abs(yf)[::25])
+    fig = px.line(x=xf, y=np.abs(yf))
     fig.update_layout(
         title='Fourier Transform',
         xaxis_title="Frequency(Hz.)",
@@ -118,10 +117,10 @@ def bird_spectrogram(request, name, number):
 
     data, sample_rate = sf.read(io.BytesIO(urlopen(url).read()))
 
-    d, frequency, time, _ = plt.specgram(data, Fs=sample_rate)
+    d, frequency, time, image = plt.specgram(data, Fs=sample_rate)
 
     with np.errstate(divide='ignore', invalid='ignore'):
-        d = np.log10(d)
+        d = np.log10(d)     # Have to take log10 I don't really know why
 
     fig = go.Figure(data=go.Heatmap(
         z=d,
