@@ -27,20 +27,19 @@ function Landing() {
         </SizeMe>
       
       </div>
-      <div className="explore">
-        <NavLink to="/Explore" className="landing-link">
-          Explore
-        </NavLink>
-      </div>
-      <div className="bird-id">
-        <NavLink to="/BirdIdentifyer" className="landing-link">
-          Identify
-        </NavLink>
-      </div>
+      <div className="landing-link">
+        <div className="explore">
+          <NavLink to="/Explore" className="landing-link">
+            Explore
+          </NavLink></div>
+        <div className="bird-id">
+          <NavLink to="/BirdIdentifyer" className="landing-link">
+            Identify
+          </NavLink></div>
       <div className="about">
-        <NavLink to="/About" className="landing-link">
-          About
-        </NavLink>
+          <NavLink to="/About" className="landing-link">
+            About
+          </NavLink></div>
       </div>
     </div>
     
