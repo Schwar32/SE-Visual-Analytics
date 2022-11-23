@@ -17,6 +17,16 @@ body {
   padding: 0 !important;
 }
 
+.landing-body {
+  width: 50%;
+  display: block;
+  text-align: center;
+  margin: 1em auto 0 auto;
+  font-size: 2em auto 0 auto;
+  color: rgb(255, 255, 255);
+  padding: 0 !important;
+}
+
 .landing-globe-container {
   display: block;
   margin: auto;
@@ -26,15 +36,30 @@ body {
 
 .landing-link {
   display: block;
-  width: 25%;
+  /*width: 25%;*/
   text-decoration: none;
   font-size: 1.5em;
-  color: #fffa;
-  margin: 2em auto 0 auto;
+  color: rgba(255, 255, 255, 0.667);
+  /*margin: 2em auto 0 auto;*/
   text-align: center;
+  
+}
+
+.explore {
+  width: 33.33%;
+  float: left;
+}
+
+.bird-id {
+  width: 33.33%;
+  float: right
+}
+.about {
+  width: 33.33%;
+  margin:auto;
 }
 
 .landing-link:hover {
   text-decoration: none;
-  color: #fff;
+  color: rgb(255, 255, 255);
 }
