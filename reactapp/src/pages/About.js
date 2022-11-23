@@ -1,8 +1,10 @@
 import "../styles/App.css";
+import NavBar from "../components/Navbar";
 
 function About() {
   return (
     <div>
+      <NavBar />
       <div className="container-fluid ">
         <div className="row justify-content-center">
           <p className="py-5">About this project</p>
