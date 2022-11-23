@@ -38,7 +38,7 @@ function VisGlobe({ location, latitude, longitude }) {
         polygonAltitude={(d) => (d === hoverD ? 0.025 : 0.01)}
         polygonCapColor={countryColor}
         polygonSideColor={() => "rgba(0, 100, 0, 0.15)"}
-        polygonStrokeColor={() => "#111c"}
+        polygonStrokeColor={() => "#2229"}
         polygonLabel={({ properties: d }) => d.ADMIN}
         onPolygonHover={setHoverD}
         polygonsTransitionDuration={300}

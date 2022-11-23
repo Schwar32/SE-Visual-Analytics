@@ -10,18 +10,12 @@ function BirdDropdown({ handleChange }) {
       .then((response) => response.json())
       .then((data) => {
         setOptions(
-          data
-            .map((entry) => {
-              var singleObj = {};
-              singleObj["label"] = entry;
-              singleObj["value"] = entry;
-              return singleObj;
-            })
-            .sort(function (a, b) {
-              var textA = a.label.toUpperCase();
-              var textB = b.label.toUpperCase();
-              return textA < textB ? -1 : textA > textB ? 1 : 0;
-            })
+          data.map((entry) => {
+            var singleObj = {};
+            singleObj["label"] = entry;
+            singleObj["value"] = entry;
+            return singleObj;
+          })
         );
       });
   }, []);
