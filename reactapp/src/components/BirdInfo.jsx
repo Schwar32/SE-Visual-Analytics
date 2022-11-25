@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import VisGlobe from "./VisGlobe";
 import { SizeMe } from "react-sizeme";
 
-function BirdHero({ bird, fileNumber }) {
+function BirdHero({ bird, fileNumber, visShown }) {
   const [commonName, setCommonName] = useState("");
   const [scientificName, setScientificName] = useState("");
   const [location, setLocation] = useState("");
@@ -10,6 +10,7 @@ function BirdHero({ bird, fileNumber }) {
   const [longitude, setLongitude] = useState("");
   const [image, setImage] = useState("");
   const [imageCred, setImageCred] = useState("");
+  const [wikiInfo, setWikiInfo] = useState("");
   const [wikiLink, setWikiLink] = useState("");
   const [infoHidden, setInfoHidden] = useState(true);
 
@@ -61,6 +62,20 @@ function BirdHero({ bird, fileNumber }) {
     }
   }, [commonName]);
 
+  useEffect(() => {
+    if (wikiLink !== "" && wikiLink !== null) {
+      const pathSplit = wikiLink.split("/");
+      const path =
+        "https://en.wikipedia.org/api/rest_v1/page/summary/" +
+        pathSplit[pathSplit.length - 1];
+      fetch(path)
+        .then((response) => response.json())
+        .then((data) => {
+          setWikiInfo(data.extract);
+        });
+    }
+  }, [wikiLink]);
+
   //Information updated when bird or audio file is changed
   useEffect(() => {
     function fetchLocationInfo() {
@@ -87,9 +102,11 @@ function BirdHero({ bird, fileNumber }) {
 
   return (
     <section>
-      <p className="info-btn" onClick={updateInfoSection}>
-        General Information ∨
-      </p>
+      {visShown && (
+        <p className="info-btn" onClick={updateInfoSection}>
+          General Information ∨
+        </p>
+      )}
 
       {!infoHidden && (
         <div className="info-section">
@@ -109,6 +126,7 @@ function BirdHero({ bird, fileNumber }) {
                     longitude={longitude}
                     width={width}
                     height={width}
+                    rotate={false}
                   />
                 )}
               </SizeMe>
@@ -118,7 +136,7 @@ function BirdHero({ bird, fileNumber }) {
             <h2 className="info">Common Name: {commonName}</h2>
             <h2 className="info">Scientific Name: {scientificName}</h2>
             <h2 className="info">Location: {location}</h2>
-
+            <h2 className="info">{wikiInfo}</h2>
             <a className="wiki-link" href={wikiLink}>
               {wikiLink}
             </a>

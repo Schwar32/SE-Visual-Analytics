@@ -5,7 +5,14 @@ import Graph from "./Graph";
 import BirdDropdown from "./BirdDropdown";
 import VisTypeSelect from "./VisTypeSelect";
 
-function BirdHero({ container, bird, fileNumber, handleBirdChange, nextFile }) {
+function BirdHero({
+  container,
+  bird,
+  fileNumber,
+  handleBirdChange,
+  nextFile,
+  handleVisShown,
+}) {
   const [file, setFile] = useState("");
   const [graph, setGraph] = useState("");
   const [visType, setVisType] = useState("");
@@ -39,6 +46,12 @@ function BirdHero({ container, bird, fileNumber, handleBirdChange, nextFile }) {
       fetchGraphData();
     }
   }, [bird, fileNumber, visType]);
+
+  useEffect(() => {
+    if (graph !== "") {
+      handleVisShown();
+    }
+  }, [graph]);
 
   //Updates visType to new selection
   function handleVisChange(selection) {
