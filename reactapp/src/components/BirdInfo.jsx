@@ -10,6 +10,7 @@ function BirdHero({ bird, fileNumber, visShown }) {
   const [longitude, setLongitude] = useState("");
   const [image, setImage] = useState("");
   const [imageCred, setImageCred] = useState("");
+  const [wikiInfo, setWikiInfo] = useState("");
   const [wikiLink, setWikiLink] = useState("");
   const [infoHidden, setInfoHidden] = useState(true);
 
@@ -60,6 +61,20 @@ function BirdHero({ bird, fileNumber, visShown }) {
       fetchImage();
     }
   }, [commonName]);
+
+  useEffect(() => {
+    if (wikiLink !== "" && wikiLink !== null) {
+      const pathSplit = wikiLink.split("/");
+      const path =
+        "https://en.wikipedia.org/api/rest_v1/page/summary/" +
+        pathSplit[pathSplit.length - 1];
+      fetch(path)
+        .then((response) => response.json())
+        .then((data) => {
+          setWikiInfo(data.extract);
+        });
+    }
+  }, [wikiLink]);
 
   //Information updated when bird or audio file is changed
   useEffect(() => {
@@ -121,7 +136,7 @@ function BirdHero({ bird, fileNumber, visShown }) {
             <h2 className="info">Common Name: {commonName}</h2>
             <h2 className="info">Scientific Name: {scientificName}</h2>
             <h2 className="info">Location: {location}</h2>
-
+            <h2 className="info">{wikiInfo}</h2>
             <a className="wiki-link" href={wikiLink}>
               {wikiLink}
             </a>

@@ -119,11 +119,14 @@ body {
     font-size: 0.7em;
   }
   .plotly-chart {
-    aspect-ratio: 5/4.5;
     width: 100%;
   }
   .next-btn {
     flex-grow: 0.5;
+    font-size: 0.7em;
+  }
+  .bird-dropdown {
+    font-size: 0.7em;
   }
 }
 
@@ -140,7 +143,6 @@ body {
 
 .next-btn {
   flex-grow: 0.05;
-  height: 2.5em;
   border: 1px solid white;
   background-color: #3b365a;
   text-align: center;
@@ -174,23 +176,24 @@ body {
 
 .info-section {
   margin: 0;
-  display: flex;
+  display: block;
   flex: 0.25fr 0.75fr;
   flex-direction: row;
 }
 
 .info-visuals {
-  flex-grow: 1;
+  display: block;
 }
 
 .bird_img {
+  display: block;
   aspect-ratio: 1.25/1;
-  width: 100%;
+  width: 60%;
   object-fit: cover;
   border-radius: 0.25em;
   border: 1px solid white;
   padding: 0;
-  margin: 0;
+  margin: auto;
 }
 
 .image-credits {
@@ -202,23 +205,21 @@ body {
 }
 
 .info-text {
-  flex-grow: 1;
-  padding: 1em;
+  display: block;
   text-align: center;
 }
 
 .explore-globe-container {
+  margin: auto;
   padding: 0;
-  width: 100%;
+  width: 60%;
 }
 
 .info {
-  width: 50%;
   word-wrap: break-word;
   color: #fff;
   font-size: 1.15em;
   text-align: center;
-  margin: 1em auto;
 }
 
 .wiki-link {

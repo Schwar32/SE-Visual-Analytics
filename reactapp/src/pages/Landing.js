@@ -47,7 +47,7 @@ function Landing() {
               latitude={randLat}
               longitude={randLng}
               width={width}
-              height={width / (4 / 4)}
+              height={width}
               rotate={true}
             />
           )}

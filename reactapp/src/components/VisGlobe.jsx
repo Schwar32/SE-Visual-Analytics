@@ -71,7 +71,7 @@ function VisGlobe({ location, latitude, longitude, width, height, rotate }) {
       polygonsData={countries.features.filter(
         (d) => d.properties.ISO_A2 !== "AQ"
       )}
-      polygonAltitude={(d) => (d === hoverD ? 0.0125 : 0.0075)}
+      polygonAltitude={(d) => (d === hoverD ? 0.0125 : 0.01)}
       polygonCapColor={countryColor}
       polygonSideColor={() => "rgba(0, 20, 0, 0.15)"}
       polygonStrokeColor={() => "#111c"}
