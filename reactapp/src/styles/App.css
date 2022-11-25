@@ -230,3 +230,7 @@ body {
   text-align: center;
   margin: 1em auto;
 }
+
+.bird-container {
+  margin-bottom: 5em;
+}

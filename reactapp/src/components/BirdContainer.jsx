@@ -36,7 +36,7 @@ function BirdContainer({ container }) {
   }
 
   return (
-    <div className="col-lg-6 p-5">
+    <div className="col-lg-6 p-5 bird-container">
       <BirdHero
         container={container}
         bird={bird}

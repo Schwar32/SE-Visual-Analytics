@@ -26,17 +26,15 @@ function Landing() {
 
   return (
     <div className="landing-page">
-      <h1 className="py-5 landing-title">
+      <h1 className="landing-title">
         Welcome to the World of Visual Analytics
       </h1>
-      <div className="py-5 landing-body">
+      <div className="landing-body">
         <p>
-          {" "}
           See results of graph output of multiple calls per bird, location
           information, and more!<br></br>
           Presented it in an intuitive and easy to understand format.<br></br>
           Explore hundreds of birds and compare data in real time.<br></br>
-          Click Below to find out more.<br></br>{" "}
         </p>
       </div>
       <div className="landing-globe-container">

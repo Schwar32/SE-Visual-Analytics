@@ -12,7 +12,7 @@ body {
 .landing-title {
   display: block;
   text-align: center;
-  margin: 1em auto 1em auto;
+  margin: 1em auto 0.5em auto;
   font-size: 3em;
   padding: 0 !important;
 }
@@ -35,12 +35,12 @@ body {
 }
 
 .landing-link {
-  margin-top: 2em;
-  margin-bottom: 2em;
+  margin-top: 1em;
+  margin-bottom: 1em;
   display: flex;
   /*width: 25%;*/
   text-decoration: none;
-  font-size: 1.5em;
+  font-size: 1.35em;
   color: rgba(255, 255, 255, 0.667);
   justify-content: space-evenly;
   /*margin: 2em auto 0 auto;*/
