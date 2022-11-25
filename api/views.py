@@ -18,12 +18,12 @@ from urllib.request import urlopen
 import io
 import ssl
 
-#import librosa
-#import tensorflow as tf
-#import tensorflow_io as tfio
+import librosa
+import tensorflow as tf
+import tensorflow_io as tfio
 import pandas as pd
-#import keras.models
-#from sklearn.preprocessing import LabelEncoder
+import keras.models
+from sklearn.preprocessing import LabelEncoder
 from geopy.geocoders import Nominatim
 
 
@@ -207,9 +207,14 @@ def detailed_prediction(model, label_encoder, file_path):
 
 @api_view(['GET'])
 def predict_call(request):
-    df = pd.read_csv('./staticfiles/train_metadata.csv')
-    birds = Bird.objects.all()
+    model = keras.models.load_model("./staticfiles/model")
+    label_encoder = load_encoder()
+    test_file = "./staticfiles/XC524251 - American Crow - Corvus brachyrhynchos"
+    guesses = detailed_prediction(model, label_encoder, test_file)
+    return Response(guesses)
     """
+    #df = pd.read_csv('./staticfiles/train_metadata.csv')
+    birds = Bird.objects.all()
     geolocator = Nominatim(user_agent="GetLoc")
     for bird in birds:
         print(bird)
@@ -226,4 +231,3 @@ def predict_call(request):
             print("error")
         bird.save()
     """
-    return Response("guesses")
