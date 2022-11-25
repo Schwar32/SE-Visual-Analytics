@@ -31,10 +31,12 @@ body {
   display: block;
   margin: auto;
   padding: 0;
-  width: 35%;
+  width: 30%;
 }
 
 .landing-link {
+  margin-top: 2em;
+  margin-bottom: 2em;
   display: flex;
   /*width: 25%;*/
   text-decoration: none;
@@ -43,18 +45,17 @@ body {
   justify-content: space-evenly;
   /*margin: 2em auto 0 auto;*/
   /*text-align: center;*/
-  
 }
 
 .explore {
-  flex:1;
+  flex: 1;
 }
 
 .bird-id {
-  flex:1;
+  flex: 1;
 }
 .about {
-  flex:1;
+  flex: 1;
 }
 
 .landing-link:hover {

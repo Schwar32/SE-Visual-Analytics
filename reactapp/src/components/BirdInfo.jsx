@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import VisGlobe from "./VisGlobe";
 import { SizeMe } from "react-sizeme";
 
-function BirdHero({ bird, fileNumber }) {
+function BirdHero({ bird, fileNumber, visShown }) {
   const [commonName, setCommonName] = useState("");
   const [scientificName, setScientificName] = useState("");
   const [location, setLocation] = useState("");
@@ -87,9 +87,11 @@ function BirdHero({ bird, fileNumber }) {
 
   return (
     <section>
-      <p className="info-btn" onClick={updateInfoSection}>
-        General Information ∨
-      </p>
+      {visShown && (
+        <p className="info-btn" onClick={updateInfoSection}>
+          General Information ∨
+        </p>
+      )}
 
       {!infoHidden && (
         <div className="info-section">
@@ -109,6 +111,7 @@ function BirdHero({ bird, fileNumber }) {
                     longitude={longitude}
                     width={width}
                     height={width}
+                    rotate={false}
                   />
                 )}
               </SizeMe>

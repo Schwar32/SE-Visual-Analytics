@@ -8,6 +8,7 @@ function BirdContainer({ container }) {
   const [bird, setBird] = useState("");
   const [fileNumber, setFileNumber] = useState("");
   const [fileCount, setFileCount] = useState("");
+  const [visShown, setVisShown] = useState(false);
 
   useEffect(() => {
     if (bird !== "") {
@@ -24,6 +25,10 @@ function BirdContainer({ container }) {
     setFileNumber(0);
   };
 
+  const handleVisShown = () => {
+    setVisShown(true);
+  };
+
   function nextFile() {
     if (bird !== "") {
       setFileNumber((fileNumber + 1) % fileCount);
@@ -38,9 +43,10 @@ function BirdContainer({ container }) {
         fileNumber={fileNumber}
         handleBirdChange={handleBirdChange}
         nextFile={nextFile}
+        handleVisShown={handleVisShown}
       />
 
-      <BirdInfo bird={bird} fileNumber={fileNumber} />
+      <BirdInfo bird={bird} fileNumber={fileNumber} visShown={visShown} />
     </div>
   );
 }
