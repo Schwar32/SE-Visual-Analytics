@@ -2,8 +2,6 @@
 
 * {
   font-family: "Montserrat", sans-serif;
-  margin: 0;
-  padding: 0;
 }
 
 .navbar {
@@ -90,6 +88,49 @@ body {
   background-color: #ffffff !important;
 }
 
+.testing {
+  display: block;
+  margin: 2em auto;
+}
+
+h2 {
+  color: #fff !important;
+  font-size: 1.15em !important;
+  padding-top: 2em !important;
+  padding-left: 6em !important;
+  margin: 2em auto;
+}
+
+pi {
+  text-align: center;
+}
+
+h5 {
+  color: #d7d7d7 !important;
+  font-size: 1.15em !important;
+  padding-top: 2em !important;
+  padding-left: 6em !important;
+  margin: 2em auto;
+}
+
+h6 {
+  color: #d7d7d7 !important;
+  font-size: 1.15em !important;
+  padding-top: 5.25em !important;
+  padding-left: 6em !important;
+}
+
+.bird_img {
+  aspect-ratio: 1.25/1;
+  width: 50%;
+  object-fit: cover;
+  display: block;
+  margin: left;
+  float: left;
+  border-radius: 0.25em;
+  border: 1px solid white;
+}
+
 .vis-select {
   display: flex;
   flex: 1fr 1fr 1fr;
@@ -119,20 +160,11 @@ body {
     font-size: 0.7em;
   }
   .plotly-chart {
+    aspect-ratio: 5/4.5;
     width: 100%;
   }
   .next-btn {
     flex-grow: 0.5;
-    font-size: 0.7em;
-  }
-  .bird-dropdown {
-    font-size: 0.7em;
-  }
-}
-
-@media (max-width: 991px) {
-  .info-section {
-    flex-direction: column !important;
   }
 }
 
@@ -143,6 +175,7 @@ body {
 
 .next-btn {
   flex-grow: 0.05;
+  height: 2.5em;
   border: 1px solid white;
   background-color: #3b365a;
   text-align: center;
@@ -156,6 +189,17 @@ body {
 
 .bird-dropdown {
   flex-grow: 1;
+}
+
+.info-section {
+  background-color: #150f3e00;
+  border-radius: 0.5em;
+  padding-bottom: 20em;
+  box-shadow: inset 0 0 1em #0c082a;
+}
+
+.image-credits {
+  color: #aaa;
 }
 
 .info-btn {
@@ -174,63 +218,38 @@ body {
   color: #fff;
 }
 
-.info-section {
-  margin: 0;
+.vis-globe {
   display: block;
-  flex: 0.25fr 0.75fr;
-  flex-direction: row;
+  margin: 7.5em;
 }
 
-.info-visuals {
-  display: block;
-}
-
-.bird_img {
-  display: block;
-  aspect-ratio: 1.25/1;
-  width: 60%;
-  object-fit: cover;
-  border-radius: 0.25em;
-  border: 1px solid white;
-  padding: 0;
-  margin: auto;
-}
-
-.image-credits {
-  font-size: 0.85em;
-  margin: 0;
-  text-align: center;
-  color: #aaa;
-  margin-top: 1em;
-}
-
-.info-text {
-  display: block;
+.card {
+  background-color: #3b365a;
+  color: white;
+  padding: 16px;
   text-align: center;
 }
 
-.explore-globe-container {
-  margin: auto;
-  padding: 0;
-  width: 60%;
+.card-column {
+  float: left;
+  width: 33%;
+  padding: 0 10px;
 }
 
-.info {
-  word-wrap: break-word;
-  color: #fff;
-  font-size: 1.15em;
-  text-align: center;
+.card-row {
+  margin: 0 -5px;
 }
 
-.wiki-link {
-  width: 50%;
-  font-size: 1.15em;
-  color: #fff;
-  word-wrap: break-word;
-  text-align: center;
-  margin: 1em auto;
+.card-row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
-.bird-container {
-  margin-bottom: 5em;
+@media screen and (max-width: 600px) {
+  .card-column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
 }
