@@ -4,7 +4,6 @@ import NavBar from "../components/Navbar";
 import { useState, useEffect } from "react";
 import * as tf from "@tensorflow/tfjs";
 import Cookies from "js-cookie";
-import { tensor } from "@tensorflow/tfjs";
 /* FUNCTIONALITY OF SUBMIT
 
 -After clicking the submit button
@@ -83,7 +82,7 @@ function BirdIdentifyer() {
           for (var i = 0; i < tensorData.length; i++) {
             guesses.push({
               label: labelEncoder[i],
-              confidence: tensorData[i],
+              confidence: tensorData[i] * 100,
             });
           }
           guesses.sort(function (a, b) {
@@ -96,6 +95,7 @@ function BirdIdentifyer() {
           guesses.reverse();
           console.log(guesses);
           setPredictions(guesses);
+          console.log(guesses[0].confidence);
         });
     }
   }

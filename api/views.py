@@ -1,7 +1,5 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from django.http import JsonResponse
-from django.middleware.csrf import get_token
 
 from .serializers import BirdInfoSerializer
 from .serializers import BirdAudioSerializer
@@ -23,10 +21,7 @@ import librosa
 import tensorflow as tf
 import tensorflow_io as tfio
 import pandas as pd
-import keras.models
 from sklearn.preprocessing import LabelEncoder
-from geopy.geocoders import Nominatim
-from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.csrf import ensure_csrf_cookie
 
 
@@ -173,7 +168,7 @@ def preprocess(request):
     dict = request.data
     print(dict)
     file = dict["file"]
-    wav =  load_audio(file)
+    wav = load_audio(file)
     wav = wav[:960000]
     zero_padding = tf.zeros([960000] - tf.shape(wav), dtype=tf.float32)
     wav = tf.concat([zero_padding, wav], 0)

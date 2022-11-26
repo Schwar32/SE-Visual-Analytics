@@ -26,6 +26,7 @@ h5py==3.7.0
 idna==3.4
 importlib-metadata==5.0.0
 joblib==1.2.0
+kaleido==0.2.1
 keras==2.10.0
 Keras-Preprocessing==1.1.2
 kiwisolver==1.4.4
@@ -35,6 +36,7 @@ llvmlite==0.39.1
 Markdown==3.4.1
 MarkupSafe==2.1.1
 matplotlib==3.6.1
+mysqlclient==2.1.1
 numba==0.56.4
 numpy==1.23.3
 oauthlib==3.2.2
