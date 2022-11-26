@@ -10,29 +10,36 @@
    width: 40%;
    height: 20em;
    margin: auto;
-   /*border: 3px solid gray;*/
-   /*background-color: black;*/
+   /*border: 3px solid gray;
+   background-color: black;*/
 }
 
 .item-1 {
     color: white;
     text-align: center;
-    /*background-color: blueviolet;*/
+    /*background-color: rgb(210, 176, 241);*/
+}
+.item-2 {
+    color: white;
+    text-align: center;
+    /*background-color: blueviolet;
+    */
 }
 
 .item-1-header {
     margin:auto;
     height: 20%;
     width: 100%;
-    /*background-color: chocolate;*/
+    /*background-color: chocolate;
+    */
 }
 
 .item-1-body {
     margin:auto;
     height: 35%;
     width: 55%;
-    /*background-color: darkgoldenrod;*/
-    
+    /*background-color: darkgoldenrod;
+    */
 }
 
 .item-1-button {
@@ -43,5 +50,12 @@
     background-color:#3b365a;
     color: white;
     border: 1px solid white;
+}
+
+.item-1-button:hover {
+    cursor: pointer;
+    text-decoration: none;
+    background-color: #6f67a9;
+     
 }
 
