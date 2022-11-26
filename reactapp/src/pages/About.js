@@ -61,9 +61,7 @@ function About() {
                       <strong>Hunter</strong>
                     </h4>
                     <pi>
-                      <center>
                         This is our <strong>MVP</strong>, and head developer.
-                      </center>
                     </pi>
                   </div>
                 </div>
@@ -75,7 +73,7 @@ function About() {
                       <strong>Justin</strong>
                     </h4>
                     <pi>
-                      <center>This is our project manager.</center>
+                      This is our project manager.
                     </pi>
                   </div>
                 </div>
@@ -87,7 +85,7 @@ function About() {
                       <strong>Nick</strong>
                     </h4>
                     <pi>
-                      <center>Deveper and Top front end programmer.</center>
+                      Deveper and Top front end programmer.
                     </pi>
                   </div>
                 </div>
@@ -100,9 +98,9 @@ function About() {
                   <h4>
                     <strong>Lorenzo</strong>
                   </h4>
-                  <p>
-                    <center>Scrum master and UX designer.</center>
-                  </p>
+                  <pi>
+                    Scrum master and UX designer.
+                  </pi>
                 </div>
               </div>
             </div>
@@ -112,12 +110,10 @@ function About() {
                   <h4>
                     <strong>Evan</strong>
                   </h4>
-                  <p>
-                    <center>
+                  <pi>
                       Developer, Evan has helped a lot in both the coding aspect
                       and the papers of this project.
-                    </center>
-                  </p>
+                  </pi>
                 </div>
               </div>
             </div>
@@ -128,9 +124,9 @@ function About() {
                   <h4>
                     <strong>Yeison</strong>
                   </h4>
-                  <p>
-                    <center>Developer, helped with the front end.</center>
-                  </p>
+                  <pi>
+                    Developer, helped with the front end.
+                  </pi>
                 </div>
               </div>
             </div>
