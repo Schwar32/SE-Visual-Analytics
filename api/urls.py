@@ -12,4 +12,5 @@ urlpatterns = [
     path('bird-spectrogram/<str:name>/<str:number>', views.bird_spectrogram, name="bird-spectrogram"),
     path('bird-preprocess-call/', views.preprocess, name="bird-preprocess-call"),
     path('bird-load-encoder/', views.load_encoder, name="bird-load-encoder"),
+    path('get-csrf/', views.get_csrf_token, name="csrf"),
 ]

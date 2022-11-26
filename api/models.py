@@ -14,4 +14,3 @@ class Bird(models.Model):
 
     def __str__(self):
         return self.short_name + "-" + str(self.call_number)
-

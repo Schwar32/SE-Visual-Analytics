@@ -26,6 +26,8 @@ import pandas as pd
 import keras.models
 from sklearn.preprocessing import LabelEncoder
 from geopy.geocoders import Nominatim
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import ensure_csrf_cookie
 
 
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -157,8 +159,8 @@ def load_encoder(request):
     return Response(classes)
 
 
-def load_audio(file_path):
-    audio_data, sample_rate = sf.read(file_path.numpy())
+def load_audio(file):
+    audio_data, sample_rate = sf.read(file)
     if audio_data.ndim > 1:
         audio_data = np.swapaxes(audio_data, 0, 1)
         audio_data = librosa.to_mono(audio_data)
@@ -166,10 +168,12 @@ def load_audio(file_path):
     return audio_data
 
 
-@api_view(['GET'])
+@api_view(['POST'])
 def preprocess(request):
-    file_path = "staticfiles/XC543337 - American Crow - Corvus brachyrhynchos.mp3"
-    [wav, ] = tf.py_function(load_audio, [file_path], [tf.float32])
+    dict = request.data
+    print(dict)
+    file = dict["file"]
+    wav =  load_audio(file)
     wav = wav[:960000]
     zero_padding = tf.zeros([960000] - tf.shape(wav), dtype=tf.float32)
     wav = tf.concat([zero_padding, wav], 0)
@@ -199,3 +203,7 @@ def preprocess(request):
     return Response(dbscale_mel_spectrogram)
 
 
+@api_view(['GET'])
+@ensure_csrf_cookie
+def get_csrf_token(request):
+    return Response({'success': 'CSRF cookie set'})
