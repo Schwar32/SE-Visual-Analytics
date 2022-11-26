@@ -1,6 +1,7 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.http import JsonResponse
+from django.middleware.csrf import get_token
 
 from .serializers import BirdInfoSerializer
 from .serializers import BirdAudioSerializer
@@ -144,13 +145,16 @@ def bird_spectrogram(request, name, number):
     return Response(fig_json)
 
 
-def load_encoder():
+@api_view(['GET'])
+def load_encoder(request):
     label_encoder = LabelEncoder()
-    cols = ["filename", "primary_label"]
+    cols = ["primary_label", "common_name"]
     df = pd.read_csv("./staticfiles/train_metadata.csv", usecols=cols)
-    labels = df.pop('primary_label')
+    df = df.loc[df['primary_label'] <= "amewig"]
+    labels = df.pop('common_name')
     label_encoder.fit_transform(labels)
-    return label_encoder
+    classes = label_encoder.classes_
+    return Response(classes)
 
 
 def load_audio(file_path):
@@ -158,76 +162,40 @@ def load_audio(file_path):
     if audio_data.ndim > 1:
         audio_data = np.swapaxes(audio_data, 0, 1)
         audio_data = librosa.to_mono(audio_data)
-    audio_data = librosa.resample(audio_data, sample_rate, 32000)
+    audio_data = librosa.resample(y=audio_data, orig_sr=sample_rate, target_sr=32000)
     return audio_data
 
 
-def preprocess(file_path):
+@api_view(['GET'])
+def preprocess(request):
+    file_path = "staticfiles/XC543337 - American Crow - Corvus brachyrhynchos.mp3"
     [wav, ] = tf.py_function(load_audio, [file_path], [tf.float32])
-    wav = wav[:480000]
-    zero_padding = tf.zeros([480000] - tf.shape(wav), dtype=tf.float32)
+    wav = wav[:960000]
+    zero_padding = tf.zeros([960000] - tf.shape(wav), dtype=tf.float32)
     wav = tf.concat([zero_padding, wav], 0)
 
     spectrogram = tfio.audio.spectrogram(
-        wav, nfft=4096, window=4096, stride=int(480000/128) + 1)
+        wav, nfft=2048, window=2048, stride=int(960000 / 224) + 1)
 
     mel_spectrogram = tfio.audio.melscale(
-        spectrogram, rate=32000, mels=128, fmin=0, fmax=16000)
+        spectrogram, rate=32000, mels=224, fmin=500, fmax=13000)
 
     dbscale_mel_spectrogram = tfio.audio.dbscale(
         mel_spectrogram, top_db=80)
 
     dbscale_mel_spectrogram = tf.expand_dims(dbscale_mel_spectrogram, axis=2)
     dbscale_mel_spectrogram = tf.repeat(dbscale_mel_spectrogram, repeats=3, axis=2)
-    dbscale_mel_spectrogram = dbscale_mel_spectrogram / 80
-    return dbscale_mel_spectrogram
+    dbscale_mel_spectrogram = tf.divide(
+        tf.add(tf.subtract(
+            dbscale_mel_spectrogram,
+            tf.reduce_min(dbscale_mel_spectrogram)
+        ), tf.keras.backend.epsilon()),
+        tf.maximum(tf.subtract(
+            tf.reduce_max(dbscale_mel_spectrogram),
+            tf.reduce_min(dbscale_mel_spectrogram)
+        ), tf.keras.backend.epsilon() * 2),
+    )
+    dbscale_mel_spectrogram = dbscale_mel_spectrogram.numpy().reshape(1, 224, 224, 3)
+    return Response(dbscale_mel_spectrogram)
 
 
-def make_prediction(model, file_path):
-    image = preprocess(file_path)
-    image = image.numpy().reshape(1, 128, 128, 3)
-    predicted_label = model.predict([image], verbose=False)
-    return predicted_label
-
-
-# Takes in audio file and prints a detailed description of the prediction
-def detailed_prediction(model, label_encoder, file_path):
-    prediction = make_prediction(model, file_path)[0]
-    SHOW_AMOUNT = 5
-    max_indexes = np.argpartition(prediction, -SHOW_AMOUNT)[-SHOW_AMOUNT:]
-    max_indexes = max_indexes[np.argsort(prediction[max_indexes])]
-    max_indexes = np.flip(max_indexes)
-    guesses = ""
-    for index in range(len(max_indexes)):
-        confidence = prediction[max_indexes[index]]
-        class_prediction = label_encoder.inverse_transform([max_indexes[index]])
-        guesses += (class_prediction + " with " + str(round(confidence * 100, 2)) + "% confidence   ")
-    return guesses
-
-
-@api_view(['GET'])
-def predict_call(request):
-    model = keras.models.load_model("./staticfiles/model")
-    label_encoder = load_encoder()
-    test_file = "./staticfiles/XC524251 - American Crow - Corvus brachyrhynchos"
-    guesses = detailed_prediction(model, label_encoder, test_file)
-    return Response(guesses)
-    """
-    #df = pd.read_csv('./staticfiles/train_metadata.csv')
-    birds = Bird.objects.all()
-    geolocator = Nominatim(user_agent="GetLoc")
-    for bird in birds:
-        print(bird)
-        location = geolocator.reverse(str(bird.latitude) + "," + str(bird.longitude), language='en')
-        print(location)
-        try:
-            address = location.raw['address']
-            country = address.get('country', '')
-            if country == "United States":
-                country = "United States of America"
-            bird.location = country
-        except:
-            bird.location = "unknown"
-            print("error")
-        bird.save()
-    """

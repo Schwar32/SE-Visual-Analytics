@@ -27,6 +27,9 @@ SECRET_KEY = 'django-insecure-i@ntzkksi=il%%6f30^ma0gl7ptv8^@ot+^3zue^9ce1ap0nao
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:3000",
+    "http://localhost:8000"]
 
 
 # Application definition
@@ -144,8 +147,11 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'reactapp/build/static'),
 ]
 
+CORS_ALLOW_CREDENTIALS = True
+
 CORS_ORIGIN_WHITELIST = [
-    "http://localhost:3000"
+    "http://localhost:3000",
+    "http://localhost:8000"
 ]
 
 STATIC_URL = '/static/'
