@@ -23,11 +23,7 @@ function BirdIdentifyer() {
   //Fetches the model and label encoder
   useEffect(() => {
     const fetchModel = async () => {
-      setModel(
-        await tf.loadLayersModel(
-          "https://raw.githubusercontent.com/Schwar32/SE-Machine-Learning/main/js_model/model.json"
-        )
-      );
+      setModel(await tf.loadLayersModel("./full_js_model/model.json"));
     };
     fetchModel();
     fetch("/api/bird-load-encoder")
@@ -82,7 +78,7 @@ function BirdIdentifyer() {
           for (var i = 0; i < tensorData.length; i++) {
             guesses.push({
               label: labelEncoder[i],
-              confidence: tensorData[i] * 100,
+              confidence: (tensorData[i] * 100).toFixed(3),
             });
           }
           guesses.sort(function (a, b) {
@@ -95,7 +91,6 @@ function BirdIdentifyer() {
           guesses.reverse();
           console.log(guesses);
           setPredictions(guesses);
-          console.log(guesses[0].confidence);
         });
     }
   }

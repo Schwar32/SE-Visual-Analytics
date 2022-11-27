@@ -147,7 +147,6 @@ def load_encoder(request):
     label_encoder = LabelEncoder()
     cols = ["primary_label", "common_name"]
     df = pd.read_csv("./staticfiles/train_metadata.csv", usecols=cols)
-    df = df.loc[df['primary_label'] <= "amewig"]
     labels = df.pop('common_name')
     label_encoder.fit_transform(labels)
     classes = label_encoder.classes_
@@ -166,7 +165,6 @@ def load_audio(file):
 @api_view(['POST'])
 def preprocess(request):
     dict = request.data
-    print(dict)
     file = dict["file"]
     wav = load_audio(file)
     wav = wav[:960000]
