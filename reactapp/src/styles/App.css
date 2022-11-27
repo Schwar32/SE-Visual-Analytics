@@ -1,3 +1,4 @@
+
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
 
 * {
@@ -118,13 +119,16 @@ body {
   .vis-select-button {
     font-size: 0.7em;
   }
+
   .plotly-chart {
     width: 100%;
   }
+
   .next-btn {
     flex-grow: 0.5;
     font-size: 0.7em;
   }
+
   .bird-dropdown {
     font-size: 0.7em;
   }
@@ -234,3 +238,39 @@ body {
 .bird-container {
   margin-bottom: 5em;
 }
+
+.card {
+  background-color: #3b365a;
+  color: white;
+  padding: 16px;
+  text-align: center;
+}
+
+.card-column {
+  float: left;
+  width: 33%;
+  padding: 0 10px;
+}
+
+pi {
+  text-align: center;
+}
+.card-row {
+  margin: 0 -5px;
+}
+
+.card-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 600px) {
+  .card-column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+
