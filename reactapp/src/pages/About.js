@@ -1,9 +1,11 @@
 import "../styles/App.css";
 import NavBar from "../components/Navbar";
+import Navbar from "../components/Navbar";
 
 function About() {
   return (
     <div>
+      <Navbar />
       <div class="container-fluid">
         <div>
           <h1 class="py-5">
@@ -61,7 +63,7 @@ function About() {
                       <strong>Hunter</strong>
                     </h4>
                     <pi>
-                        This is our <strong>MVP</strong>, and head developer.
+                      This is our <strong>MVP</strong>, and head developer.
                     </pi>
                   </div>
                 </div>
@@ -72,9 +74,7 @@ function About() {
                     <h4>
                       <strong>Justin</strong>
                     </h4>
-                    <pi>
-                      This is our project manager.
-                    </pi>
+                    <pi>This is our project manager.</pi>
                   </div>
                 </div>
               </div>
@@ -84,9 +84,7 @@ function About() {
                     <h4>
                       <strong>Nick</strong>
                     </h4>
-                    <pi>
-                      Deveper and Top front end programmer.
-                    </pi>
+                    <pi>Deveper and Top front end programmer.</pi>
                   </div>
                 </div>
               </div>
@@ -98,9 +96,7 @@ function About() {
                   <h4>
                     <strong>Lorenzo</strong>
                   </h4>
-                  <pi>
-                    Scrum master and UX designer.
-                  </pi>
+                  <pi>Scrum master and UX designer.</pi>
                 </div>
               </div>
             </div>
@@ -111,8 +107,8 @@ function About() {
                     <strong>Evan</strong>
                   </h4>
                   <pi>
-                      Developer, Evan has helped a lot in both the coding aspect
-                      and the papers of this project.
+                    Developer, Evan has helped a lot in both the coding aspect
+                    and the papers of this project.
                   </pi>
                 </div>
               </div>
@@ -124,9 +120,7 @@ function About() {
                   <h4>
                     <strong>Yeison</strong>
                   </h4>
-                  <pi>
-                    Developer, helped with the front end.
-                  </pi>
+                  <pi>Developer, helped with the front end.</pi>
                 </div>
               </div>
             </div>
