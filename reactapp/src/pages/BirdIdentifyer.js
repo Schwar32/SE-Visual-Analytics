@@ -82,10 +82,9 @@ function BirdIdentifyer() {
             });
           }
           guesses.sort(function (a, b) {
-            return a.confidence > b.confidence ? 1 : -1;
+            return parseFloat(a.confidence) > parseFloat(b.confidence) ? -1 : 1;
           });
 
-          guesses.reverse();
           console.log(guesses);
           setPredictions(guesses);
         });

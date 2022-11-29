@@ -13,7 +13,7 @@ function About() {
               <center>ABOUT THIS PROJECT</center>
             </strong>
           </h1>
-          <pi>
+          <p>
             Welcome to our website! The purpose of our website is to have you be
             able to compare and contrast different bird calls! Each bird call
             has its own set of visualizations, which you can compare and
@@ -23,7 +23,7 @@ function About() {
             three birds at once can be compared!). Each bird comes with their
             own set of graphs, a sound file, where the bird is found, and an
             image of what the selected bird looks like. Have fun analyzing!
-          </pi>
+          </p>
         </div>
         <div class="row">
           <div class="column">
