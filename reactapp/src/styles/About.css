@@ -1,0 +1,32 @@
+h1 {
+  padding-top: 2em !important;
+  margin: 2em auto;
+  text-align: center;
+}
+
+.pi {
+  text-align: center;
+  font-size: 130%;
+  padding-left: 2em !important;
+  padding-right: 2em !important;
+}
+
+h3 {
+  text-align: center;
+  padding-top: 2em !important;
+}
+
+table{
+  border: 0px solid;
+  margin-left: auto !important;
+  margin-right: auto !important;
+
+}
+
+th{
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+
+}
+
+
