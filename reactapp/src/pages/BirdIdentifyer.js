@@ -78,17 +78,13 @@ function BirdIdentifyer() {
           for (var i = 0; i < tensorData.length; i++) {
             guesses.push({
               label: labelEncoder[i],
-              confidence: (tensorData[i] * 100).toFixed(3),
+              confidence: (tensorData[i] * 100).toFixed(8),
             });
           }
           guesses.sort(function (a, b) {
-            return a.confidence < b.confidence
-              ? -1
-              : a.confidence == b.confidence
-              ? 0
-              : 1;
+            return parseFloat(a.confidence) > parseFloat(b.confidence) ? -1 : 1;
           });
-          guesses.reverse();
+
           console.log(guesses);
           setPredictions(guesses);
         });
