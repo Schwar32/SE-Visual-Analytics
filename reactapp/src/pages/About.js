@@ -6,6 +6,7 @@ function About() {
   return (
     <div>
       <Navbar />
+
       <div>
         <h1>ABOUT THIS PROJECT</h1>
         <p className="pi">
@@ -21,21 +22,7 @@ function About() {
         </p>
       </div>
 
-      <div>
-        <h3>HOW DOES THE PROJECT WORKS</h3>
-        <p className="pi">
-          You will be able to enter any bird name from our database and then
-          receive a list of information about the bird from name variations,
-          location, calls variations of the bird, pictures, and visuals of the
-          bird call. There's also the machine learning aspect of this project,
-          users will be able to identify direct audio from a unidentified bird
-          and find what bird it is and in the case that that bird call is not
-          found in our database we will ask the user to provide us with details
-          about the bird so that it can be added in the future.
-        </p>
-      </div>
-
-      <h3>Team</h3>
+      <h3>TEAM</h3>
 
       <table>
         <tr>
@@ -50,17 +37,34 @@ function About() {
 
         <tr>
           <th>Developers</th>
-          <th>Nick, Evan, Hunter, Yeison</th>
+          <th>Nick &emsp; Evan &emsp; Hunter &emsp; Yeison</th>
         </tr>
       </table>
 
       <div>
-        <h3>GitHub</h3>
-        <p>
-          Here is the{" "}
-          <a href="https://github.com/Schwar32/SE-Visual-Analytics.git">link</a>{" "}
-          to the GitHub repository.
+        <h3>PACKAGES</h3>
+        <p className="pi">
+          This is the list of the main packages that were used for this project.
         </p>
+
+        <ul className="list">
+          <li>Numpy</li>
+          <li>TensorFlow</li>
+          <li>Django</li>
+          <li>Keras</li>
+          <li>Plotly</li>
+          <li>Librosa</li>
+          <li>and others</li>
+        </ul>
+      </div>
+      <br></br>
+      <div className="center">
+        <button>
+          <a
+            href="https://github.com/Schwar32/SE-Visual-Analytics.git"
+            className="fa fa-Github"
+          ></a>
+        </button>
       </div>
     </div>
   );
