@@ -134,22 +134,7 @@ function BirdIdentifyer() {
 
       {result && (
         <div className="container">
-          <div className="flexbox-item item-1">
-            <div className="item-1-header">
-              <h3>
-                <b>Additional Model Insights</b>
-              </h3>
-            </div>
-            <div className="item-1-body">
-              <p>
-                Model guess duration: test<br></br>
-                Bird is: test
-              </p>
-            </div>
-            <div className="item-1-button" onClick={addResults}>
-              Submit Again
-            </div>
-          </div>
+          
           <div className="flexbox-item item-2">
             <div className="item-1-header">
               <h3>
@@ -162,6 +147,9 @@ function BirdIdentifyer() {
                 65% : test data<br></br>
                 ...
               </p>
+            </div>
+            <div className="item-1-button" onClick={addResults}>
+              Submit Again
             </div>
           </div>
         </div>
