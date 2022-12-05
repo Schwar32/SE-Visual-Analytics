@@ -12,7 +12,7 @@ body {
 .landing-title {
   display: block;
   text-align: center;
-  margin: 1em auto 0.5em auto;
+  margin: 1em auto 1em auto;
   font-size: 3em;
   padding: 0 !important;
 }
@@ -32,33 +32,63 @@ body {
   margin: auto;
   padding: 0;
   width: 30%;
+  margin-top: 3em;
+  margin-bottom: 3em;
 }
 
 .landing-link {
-  margin-top: 1em;
-  margin-bottom: 1em;
-  display: flex;
-  /*width: 25%;*/
   text-decoration: none;
   font-size: 1.35em;
   color: rgba(255, 255, 255, 0.667);
+  display: grid;
+  grid-template-columns: repeat(3,33.33%);
+  grid-template-rows: 2.5em;
   justify-content: space-evenly;
-  /*margin: 2em auto 0 auto;*/
-  /*text-align: center;*/
+  align-content: center;
 }
 
 .explore {
+  font-size: 1.35em;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration:none;
+  margin:auto;
   flex: 1;
 }
 
 .bird-id {
-  flex: 1;
-}
-.about {
+  font-size: 1.35em;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration:none;
+  margin:auto;
   flex: 1;
 }
 
-.landing-link:hover {
+.about {
+  font-size: 1.35em;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration:none;
+  margin:auto;
+  flex: 1;
+}
+
+.desc {
+  font-size: 1em;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  flex: 1;
+}
+
+.explore:hover {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+
+.bird-id:hover {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+
+.about:hover {
   text-decoration: none;
   color: rgb(255, 255, 255);
 }

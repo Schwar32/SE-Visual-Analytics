@@ -29,14 +29,6 @@ function Landing() {
       <h1 className="landing-title">
         Welcome to the World of Visual Analytics
       </h1>
-      <div className="landing-body">
-        <p>
-          See results of graph output of multiple calls per bird, location
-          information, and more!<br></br>
-          Presented it in an intuitive and easy to understand format.<br></br>
-          Explore hundreds of birds and compare data in real time.<br></br>
-        </p>
-      </div>
       <div className="landing-globe-container">
         <SizeMe refreshRate={30}>
           {({ size: { width } }) => (
@@ -50,22 +42,34 @@ function Landing() {
             />
           )}
         </SizeMe>
+      
       </div>
       <div className="landing-link">
-        <div className="explore">
-          <NavLink to="/Explore" className="landing-link">
-            Explore
-          </NavLink>
+        <NavLink to="/Explore" div className="explore">
+          Explore
+        </NavLink>
+        <NavLink to="/BirdIdentifyer" className="bird-id">
+          Identify
+        </NavLink>
+        <NavLink to="/About" className="about">
+          About
+        </NavLink>
+        <div className="desc">
+            <p>Compare Visualization Data</p>
+            <p>for over 300 species of birds:</p>
+            -Oscillograms<br></br>
+            -Spectrograms<br></br>
+            -Fourier Transformations<br></br>
+            -Locations, Images, and more!<br></br>
         </div>
-        <div className="bird-id">
-          <NavLink to="/BirdIdentifyer" className="landing-link">
-            Identify
-          </NavLink>
+        <div className="desc">
+            A.I Model Identification:<br></br>
+            -Identifies uploaded audio files(.ogg,.mp3).<br></br>
+            -After upload lists guesses with confidence.<br></br>
+            Click Above to Test!
         </div>
-        <div className="about">
-          <NavLink to="/About" className="landing-link">
-            About
-          </NavLink>
+        <div className="desc">
+            Team information and more
         </div>
       </div>
     </div>

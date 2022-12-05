@@ -1,6 +1,5 @@
 .container {
     display:flex;
-    /*background-color: yellow;*/
     justify-content: space-around;
     align-items: center;
     margin-top: 10em;
@@ -10,52 +9,51 @@
    width: 40%;
    height: 20em;
    margin: auto;
-   /*border: 3px solid gray;
-   background-color: black;*/
+   justify-content: center;
 }
 
 .item-1 {
     color: white;
     text-align: center;
-    /*background-color: rgb(210, 176, 241);*/
 }
+
 .item-2 {
     color: white;
     text-align: center;
-    /*background-color: blueviolet;
-    */
 }
 
 .item-1-header {
-    margin:auto;
+    margin-bottom: 2em;
     height: 20%;
     width: 100%;
-    /*background-color: chocolate;
-    */
 }
 
 .item-1-body {
     margin:auto;
     height: 35%;
     width: 55%;
-    /*background-color: darkgoldenrod;
-    */
 }
 
 .item-1-button {
-    padding-top: .5em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
     margin:auto;
-    height: 3em;
-    width: 50%;
+    height: 1.5em;
+    width: 25%;
     background-color:#3b365a;
     color: white;
     border: 1px solid white;
+}
+
+.item-1-upload {
+    height: 3em;
+    width: 12.5%;
+    color: white;
 }
 
 .item-1-button:hover {
     cursor: pointer;
     text-decoration: none;
     background-color: #6f67a9;
-     
 }
 

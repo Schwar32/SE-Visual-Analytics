@@ -119,15 +119,16 @@ function BirdIdentifyer() {
               method="POST"
               encType="multipart/form-data"
             >
-              <input
+              <input className="item-1-upload"
                 type="file"
                 onChange={(e) => setFileUpload(e.target.files[0])}
                 accept="audio/*"
               ></input>
-              <button type="submit" className="item-1-button">
-                Submit
-              </button>
+
             </form>
+            <div className="item-1-button" onClick={addResults}>
+                Submit
+              </div>
           </div>
         </div>
       )}
