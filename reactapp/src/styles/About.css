@@ -2,6 +2,7 @@ h1 {
   padding-top: 2em !important;
   margin: 2em auto;
   text-align: center;
+  font-weight: bold;
 }
 
 .pi {
@@ -27,6 +28,7 @@ th {
   border-bottom: 1px solid #ddd;
   text-align: center;
   font-size: 120%;
+  height: 50px;
 }
 
 .list {

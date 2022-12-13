@@ -6,9 +6,8 @@ function About() {
   return (
     <div>
       <Navbar />
-
       <div>
-        <h1>ABOUT THIS PROJECT</h1>
+        <h1 className="format">ABOUT THIS PROJECT</h1>
         <p className="pi">
           Welcome to our website! The purpose of our website is to have you be
           able to compare and contrast different bird calls! Each bird call has
