@@ -88,7 +88,9 @@ function BirdIdentifyer() {
           console.log(guesses);
           setPredictions(guesses);
         });
+    
     }
+
   }
 
   const handleSubmit = async (e) => {
@@ -114,19 +116,14 @@ function BirdIdentifyer() {
                 in real time!
               </p>
             </div>
-            <form
-              onSubmit={handleSubmit}
-              method="POST"
-              encType="multipart/form-data"
-            >
+            
               <input className="item-1-upload"
                 type="file"
                 onChange={(e) => setFileUpload(e.target.files[0])}
                 accept="audio/*"
               ></input>
 
-            </form>
-            <div className="item-1-button" onClick={addResults}>
+            <div className="item-1-button" onClick={handleSubmit}>
                 Submit
               </div>
           </div>
@@ -142,16 +139,27 @@ function BirdIdentifyer() {
                 <b>The Results Are In</b>
               </h3>
             </div>
-            <div className="item-1-body">
-              <p>
-                90% : test data<br></br>
-                65% : test data<br></br>
-                ...
-              </p>
-            </div>
-            <div className="item-1-button" onClick={addResults}>
+            <div className="item-1-button-2" onClick={addResults}>
               Submit Again
             </div>
+
+            <div className="item-1-body">
+              {predictions && (
+                <div>
+                  <p>{predictions[0].label}</p>
+                  <p>{predictions[0].confidence}</p>
+                  <p>{predictions[1].label}</p>
+                  <p>{predictions[1].confidence}</p>
+                  <p>{predictions[2].label}</p>
+                  <p>{predictions[2].confidence}</p>
+                  <p>{predictions[3].label}</p>
+                  <p>{predictions[3].confidence}</p>
+                  <p>{predictions[4].label}</p>
+                  <p>{predictions[4].confidence}</p>
+                </div>
+              )}
+            </div>
+            
           </div>
         </div>
       )}

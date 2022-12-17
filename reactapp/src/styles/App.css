@@ -208,10 +208,11 @@ body {
   margin-top: 1em;
 }
 
+\\ mess with this to fix explorer page text
 .info-text {
   display: block;
   text-align: center;
-}
+  }
 
 .explore-globe-container {
   margin: auto;
@@ -221,18 +222,23 @@ body {
 
 .info {
   word-wrap: break-word;
-  color: #fff;
+  color: #aaa;
   font-size: 1.15em;
   text-align: center;
+  line-height: 25px;
+  padding: 5px;
+  margin-left: 4em;
+  margin-right: 4em;
 }
 
 .wiki-link {
   width: 50%;
   font-size: 1.15em;
-  color: #fff;
+  color: #aaa;
   word-wrap: break-word;
   text-align: center;
   margin: 1em auto;
+  padding-left: 4em;
 }
 
 .bird-container {

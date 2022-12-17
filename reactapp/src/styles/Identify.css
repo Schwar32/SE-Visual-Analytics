@@ -36,7 +36,18 @@
 
 .item-1-button {
     padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    padding-bottom: 2em;
+    margin:auto;
+    height: 1.5em;
+    width: 25%;
+    background-color:#3b365a;
+    color: white;
+    border: 1px solid white;
+}
+
+.item-1-button-2 {
+    padding-top: 0.5em;
+    padding-bottom: 4em;
     margin:auto;
     height: 1.5em;
     width: 25%;
@@ -48,6 +59,7 @@
 .item-1-upload {
     height: 3em;
     width: 12.5%;
+    padding-right: 15em;
     color: white;
 }
 
