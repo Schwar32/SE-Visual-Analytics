@@ -5,11 +5,9 @@ import { useState, useEffect } from "react";
 import * as tf from "@tensorflow/tfjs";
 import Cookies from "js-cookie";
 /* FUNCTIONALITY OF SUBMIT
-
 -After clicking the submit button
 -Add a new Results class which has the same container type as item-1
 -Space those two evenly on the page.
-
 */
 
 function BirdIdentifyer() {
@@ -23,7 +21,7 @@ function BirdIdentifyer() {
   //Fetches the model and label encoder
   useEffect(() => {
     const fetchModel = async () => {
-      setModel(await tf.loadLayersModel("./full_js_model/model.json"));
+      setModel(await tf.loadLayersModel("./JS_Model/model.json"));
     };
     fetchModel();
     fetch("/api/bird-load-encoder")
@@ -88,12 +86,11 @@ function BirdIdentifyer() {
           console.log(guesses);
           setPredictions(guesses);
         });
-    
     }
-
   }
 
   const handleSubmit = async (e) => {
+    setPredictions(null);
     e.preventDefault();
     getPrediction();
     addResults(e);
@@ -103,63 +100,90 @@ function BirdIdentifyer() {
     <div>
       <NavBar />
       {old && (
-        <div className="container">
+        <div className="identifyer-container">
           <div className="flexbox-item item-1">
-            <div className="item-1-header">
-              <h3>
-                <b>Welcome to Bird Identifier</b>
-              </h3>
-            </div>
+            <h1 className="item-1-header">
+              <b>Welcome to Bird Identifier</b>
+            </h1>
             <div className="item-1-body">
-              <p>
+              <p className="identify-info">
                 Submit a bird call and watch our neural network guess your bird
                 in real time!
               </p>
             </div>
-            
-              <input className="item-1-upload"
+
+            <label className="file-upload-label">
+              <input
+                className="item-1-upload"
                 type="file"
                 onChange={(e) => setFileUpload(e.target.files[0])}
                 accept="audio/*"
               ></input>
+              Choose File
+            </label>
 
             <div className="item-1-button" onClick={handleSubmit}>
-                Submit
-              </div>
+              Submit
+            </div>
           </div>
         </div>
       )}
 
       {result && (
-        <div className="container">
-          
-          <div className="flexbox-item item-2">
-            <div className="item-1-header">
-              <h3>
-                <b>The Results Are In</b>
-              </h3>
-            </div>
-            <div className="item-1-button-2" onClick={addResults}>
-              Submit Again
-            </div>
-
+        <div className="identifyer-container">
+          <div className="flexbox-item">
             <div className="item-1-body">
+              {!predictions && (
+                <div>
+                  <h1 className="item-1-header">
+                    <b>Loading Prediction</b>
+                  </h1>
+                </div>
+              )}
+
               {predictions && (
                 <div>
-                  <p>{predictions[0].label}</p>
-                  <p>{predictions[0].confidence}</p>
-                  <p>{predictions[1].label}</p>
-                  <p>{predictions[1].confidence}</p>
-                  <p>{predictions[2].label}</p>
-                  <p>{predictions[2].confidence}</p>
-                  <p>{predictions[3].label}</p>
-                  <p>{predictions[3].confidence}</p>
-                  <p>{predictions[4].label}</p>
-                  <p>{predictions[4].confidence}</p>
+                  <div>
+                    <h1 className="item-1-header">
+                      <b>The Results Are In</b>
+                    </h1>
+                  </div>
+                  <p className="prediction prediction-top">
+                    {predictions[0].label +
+                      " - " +
+                      Number(predictions[0].confidence).toFixed(2) +
+                      "%"}
+                  </p>
+                  <p className="prediction">
+                    {predictions[1].label +
+                      " - " +
+                      Number(predictions[1].confidence).toFixed(2) +
+                      "%"}
+                  </p>
+                  <p className="prediction">
+                    {predictions[2].label +
+                      " - " +
+                      Number(predictions[2].confidence).toFixed(2) +
+                      "%"}
+                  </p>
+                  <p className="prediction">
+                    {predictions[3].label +
+                      " - " +
+                      Number(predictions[3].confidence).toFixed(2) +
+                      "%"}
+                  </p>
+                  <p className="prediction">
+                    {predictions[4].label +
+                      " - " +
+                      Number(predictions[4].confidence).toFixed(2) +
+                      "%"}
+                  </p>
+                  <div className="item-1-button-2" onClick={addResults}>
+                    Submit Again
+                  </div>
                 </div>
               )}
             </div>
-            
           </div>
         </div>
       )}

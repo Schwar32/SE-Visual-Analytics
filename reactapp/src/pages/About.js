@@ -1,13 +1,12 @@
 import "../styles/About.css";
-import NavBar from "../components/Navbar";
 import Navbar from "../components/Navbar";
 
 function About() {
   return (
     <div>
       <Navbar />
-      <div>
-        <h1 className="format">ABOUT THIS PROJECT</h1>
+      <div className="main-container">
+        <h1 className="about-header">About This Project</h1>
         <p className="pi">
           Welcome to our website! The purpose of our website is to have you be
           able to compare and contrast different bird calls! Each bird call has
@@ -36,7 +35,7 @@ function About() {
 
         <tr>
           <th>Developers</th>
-          <th>Nick &emsp; Evan &emsp; Hunter &emsp; Yeison</th>
+          <th>Nik &emsp; Evan &emsp; Hunter &emsp; Yeison</th>
         </tr>
       </table>
 

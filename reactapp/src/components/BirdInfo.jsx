@@ -137,9 +137,12 @@ function BirdHero({ bird, fileNumber, visShown }) {
             <h2 className="info">Scientific Name: {scientificName}</h2>
             <h2 className="info">Location: {location}</h2>
             <h2 className="info">{wikiInfo}</h2>
-            <a className="wiki-link" href={wikiLink}>
-              {wikiLink}
-            </a>
+            <div className="link-block">
+              <p className="info">Learn More:</p>
+              <a className="wiki-link" href={wikiLink}>
+                {wikiLink}
+              </a>
+            </div>
           </div>
         </div>
       )}

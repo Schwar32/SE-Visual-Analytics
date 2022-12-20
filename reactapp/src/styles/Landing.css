@@ -41,41 +41,44 @@ body {
   font-size: 1.35em;
   color: rgba(255, 255, 255, 0.667);
   display: grid;
-  grid-template-columns: repeat(3,33.33%);
+  grid-template-columns: repeat(3, 33.33%);
   grid-template-rows: 2.5em;
   justify-content: space-evenly;
   align-content: center;
+  gap: 0em 1em;
+  margin: 0 2em;
 }
 
 .explore {
   font-size: 1.35em;
   color: rgba(255, 255, 255, 0.6);
-  text-decoration:none;
-  margin:auto;
+  text-decoration: none;
+  margin: auto;
   flex: 1;
 }
 
 .bird-id {
   font-size: 1.35em;
   color: rgba(255, 255, 255, 0.6);
-  text-decoration:none;
-  margin:auto;
+  text-decoration: none;
+  margin: auto;
   flex: 1;
 }
 
 .about {
   font-size: 1.35em;
   color: rgba(255, 255, 255, 0.6);
-  text-decoration:none;
-  margin:auto;
+  text-decoration: none;
+  margin: auto;
   flex: 1;
 }
 
 .desc {
-  font-size: 1em;
+  font-size: 0.75em;
   text-align: center;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.4);
   flex: 1;
+  margin-top: 1em;
 }
 
 .explore:hover {
@@ -91,4 +94,30 @@ body {
 .about:hover {
   text-decoration: none;
   color: rgb(255, 255, 255);
+}
+
+@media (max-width: 500px) {
+  .landing-title {
+    font-size: 1.75em;
+  }
+
+  .explore {
+    font-size: 1em;
+  }
+
+  .bird-id {
+    font-size: 1em;
+  }
+
+  .about {
+    font-size: 1em;
+  }
+
+  .desc {
+    font-size: 0.5em;
+  }
+
+  .landing-globe-container {
+    width: 70%;
+  }
 }

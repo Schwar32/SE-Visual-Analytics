@@ -42,7 +42,6 @@ function Landing() {
             />
           )}
         </SizeMe>
-      
       </div>
       <div className="landing-link">
         <NavLink to="/Explore" div className="explore">
@@ -54,23 +53,11 @@ function Landing() {
         <NavLink to="/About" className="about">
           About
         </NavLink>
-        <div className="desc">
-            <p>Compare Visualization Data</p>
-            <p>for over 300 species of birds:</p>
-            -Oscillograms<br></br>
-            -Spectrograms<br></br>
-            -Fourier Transformations<br></br>
-            -Locations, Images, and more!<br></br>
-        </div>
-        <div className="desc">
-            A.I Model Identification:<br></br>
-            -Identifies uploaded audio files(.ogg,.mp3).<br></br>
-            -After upload lists guesses with confidence.<br></br>
-            Click Above to Test!
-        </div>
-        <div className="desc">
-            Team information and more
-        </div>
+        <p className="desc">
+          Compare visualization data for over 300 species of birds
+        </p>
+        <p className="desc">Upload audio files to be predicted by model</p>
+        <p className="desc">Team information and more</p>
       </div>
     </div>
   );
